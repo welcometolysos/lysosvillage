@@ -1,8 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
 import Holding from '../components/Holding.astro';
 ---
 
 <Base lang="en" path="/">
-  <Holding lang="en" />
+  <Hero lang="en" />
+  <div id="after-hero"><Holding lang="en" /></div>
 </Base>

@@ -23,6 +23,9 @@ export const ui = {
     'hero.kicker': 'Paphos Highlands · 560 m · Cyprus',
     'hero.welcome': 'Welcome to Lysos',
     'hero.sub': "Cyprus's largest mountain village.",
+    'hero.alt':
+      'The church of Panagia Chryseleousa standing above the old stone fountain, mirrored in the still water of the village pool.',
+    'hero.scroll': 'Explore',
     'building.kicker': 'Being built',
     'building.title': 'The village is coming online',
     'building.body':
@@ -40,6 +43,9 @@ export const ui = {
     'hero.kicker': 'Ορεινή Πάφος · 560 μ. · Κύπρος',
     'hero.welcome': 'Καλώς ήρθατε στον Λυσό',
     'hero.sub': 'Το μεγαλύτερο ορεινό χωριό της Κύπρου.',
+    'hero.alt':
+      'Η εκκλησία της Παναγίας Χρυσελεούσας πάνω από την παλιά πέτρινη βρύση, καθρεφτισμένη στα ήρεμα νερά της δεξαμενής του χωριού.',
+    'hero.scroll': 'Εξερευνήστε',
     'building.kicker': 'Υπό κατασκευή',
     'building.title': 'Το χωριό ανεβαίνει στο διαδίκτυο',
     'building.body':

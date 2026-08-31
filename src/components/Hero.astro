@@ -1,0 +1,182 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '../assets/panagia-chryseleousa-pool.jpg';
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="hero">
+  <!--
+    The photo is bright midday blue. The grading below pulls it into the
+    site's warm-dark world: darkened, desaturated, warmed, then washed with
+    gold and ember so the stone glows and the sky reads as dusk.
+  -->
+  <div class="hero-media">
+    <Image
+      src={heroImage}
+      alt={t('hero.alt')}
+      widths={[640, 960, 1280, 1920]}
+      sizes="100vw"
+      format="webp"
+      quality={72}
+      loading="eager"
+      fetchpriority="high"
+      class="hero-img"
+    />
+    <div class="grade" aria-hidden="true"></div>
+    <div class="veil" aria-hidden="true"></div>
+  </div>
+
+  <div class="wrap hero-content">
+    <p class="kicker">{t('hero.kicker')}</p>
+    <h1>{t('hero.welcome')}</h1>
+    <p class="tagline">{t('site.tagline')}</p>
+  </div>
+
+  <a class="scroll-cue" href="#after-hero">
+    <span>{t('hero.scroll')}</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <path d="M12 5v14M6 13l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </a>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: grid;
+    align-items: end;
+    min-height: calc(100svh - 64px);
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .hero-media {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* The church sits just above the middle of the frame; bias the crop
+       so it survives on wide desktop screens as well as tall phones. */
+    object-position: 50% 34%;
+    filter: brightness(0.78) saturate(0.8) contrast(1.1);
+  }
+
+  /* Warm wash — kills the remaining daylight blue */
+  /* Cool dusk on the sky, warm gold on the stone —
+     the site's whole idea in one image: future meeting past. */
+  .grade {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(18, 30, 58, 0.80) 0%, rgba(26, 36, 58, 0.45) 26%, rgba(30, 30, 34, 0.10) 46%, transparent 60%),
+      radial-gradient(ellipse 80% 42% at 50% 52%, rgba(219, 164, 65, 0.22), transparent 76%);
+    mix-blend-mode: multiply;
+  }
+
+  .grade::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 72% 40% at 48% 50%, rgba(237, 197, 107, 0.30), transparent 72%);
+    mix-blend-mode: soft-light;
+  }
+
+  /* Legibility veil — text must stay readable for older eyes */
+  .veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(18, 16, 11, 0.42) 0%,
+      rgba(18, 16, 11, 0.06) 30%,
+      rgba(18, 16, 11, 0.55) 66%,
+      var(--stone) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    padding-bottom: clamp(5rem, 14vh, 9rem);
+    padding-top: clamp(4rem, 20vh, 10rem);
+  }
+
+  h1 {
+    font-size: var(--step-3);
+    margin-top: 0.5rem;
+    text-shadow: 0 2px 30px rgba(18, 16, 11, 0.75);
+  }
+
+  .kicker {
+    text-shadow: 0 1px 12px rgba(18, 16, 11, 0.9);
+  }
+
+  .tagline {
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    font-style: italic;
+    color: var(--gold-soft);
+    max-width: var(--measure);
+    margin-top: 0.9rem;
+    text-shadow: 0 2px 20px rgba(18, 16, 11, 0.8);
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: clamp(1rem, 3vh, 2rem);
+    left: 50%;
+    translate: -50% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .scroll-cue:hover {
+    color: var(--gold);
+  }
+
+  .scroll-cue svg {
+    width: 18px;
+    height: 18px;
+    animation: nudge 2.4s ease-in-out infinite;
+  }
+
+  @keyframes nudge {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translateY(5px);
+      opacity: 1;
+    }
+  }
+
+  /* On short landscape phones the cue collides with the text */
+  @media (max-height: 520px) {
+    .scroll-cue {
+      display: none;
+    }
+  }
+</style>
