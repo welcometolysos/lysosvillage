@@ -1,0 +1,145 @@
+---
+import '../styles/global.css';
+import LanguageSwitch from '../components/LanguageSwitch.astro';
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  /** Path WITHOUT the language prefix, e.g. '/' or '/churches' */
+  path?: string;
+  title?: string;
+  description?: string;
+}
+
+const { lang, path = '/', title, description } = Astro.props;
+const t = useTranslations(lang);
+
+const pageTitle = title ?? t('site.title');
+const pageDesc = description ?? t('site.description');
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDesc} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#12100b" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDesc} />
+    <meta property="og:locale" content={lang === 'el' ? 'el_GR' : 'en_GB'} />
+
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="alternate" hreflang="en" href={new URL(path, Astro.site)} />
+    <link
+      rel="alternate"
+      hreflang="el"
+      href={new URL(`/el${path === '/' ? '' : path}`, Astro.site)}
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=IBM+Plex+Mono:wght@400&family=Manrope:wght@400;600&display=swap"
+    />
+  </head>
+
+  <body>
+    <a class="skip" href="#main">{t('skip')}</a>
+
+    <header class="site-head">
+      <div class="wrap head-inner">
+        <a class="brand" href={lang === 'el' ? '/el/' : '/'}>
+          <span class="brand-name">{t('site.name')}</span>
+          <span class="brand-region">{t('site.region')}</span>
+        </a>
+        <LanguageSwitch lang={lang} path={path} />
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-foot">
+      <div class="wrap">
+        <p class="foot-tag">{t('site.tagline')}</p>
+        <p class="foot-meta">
+          © {new Date().getFullYear()} {t('site.name')} · Paphos, Cyprus
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .site-head {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--stone) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .head-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 64px;
+    padding-block: 0.6rem;
+  }
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .brand-name {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.01em;
+  }
+
+  .brand-region {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 0.3rem;
+  }
+
+  .site-foot {
+    border-top: 1px solid var(--line);
+    margin-top: clamp(4rem, 12vw, 8rem);
+    padding-block: clamp(2rem, 6vw, 3.5rem);
+  }
+
+  .foot-tag {
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    color: var(--gold-soft);
+    max-width: var(--measure);
+  }
+
+  .foot-meta {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 1rem;
+  }
+</style>

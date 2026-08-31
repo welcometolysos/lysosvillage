@@ -1,0 +1,70 @@
+---
+import { languages, useTranslations, localePath, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  /** Path WITHOUT the language prefix, e.g. '/' or '/churches' */
+  path?: string;
+}
+
+const { lang, path = '/' } = Astro.props;
+const t = useTranslations(lang);
+
+const short: Record<Lang, string> = { en: 'EN', el: 'ΕΛ' };
+---
+
+<nav class="langs" aria-label={t('nav.language')}>
+  {
+    (Object.keys(languages) as Lang[]).map((code) => {
+      const current = code === lang;
+      return (
+        <a
+          href={localePath(path, code)}
+          class:list={['lang', { current }]}
+          hreflang={code}
+          lang={code}
+          aria-current={current ? 'true' : undefined}
+        >
+          <span aria-hidden="true">{short[code]}</span>
+          <span class="sr-only">{languages[code]}</span>
+        </a>
+      );
+    })
+  }
+</nav>
+
+<style>
+  .langs {
+    display: flex;
+    gap: 0.4rem;
+    padding: 0.25rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+  }
+
+  .lang {
+    display: grid;
+    place-items: center;
+    min-width: 48px;
+    min-height: 40px;
+    padding-inline: 0.5rem;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+
+  .lang:hover {
+    color: var(--ink);
+    background: rgba(240, 233, 216, 0.06);
+  }
+
+  .lang.current {
+    background: var(--gold);
+    color: var(--stone);
+    font-weight: 600;
+  }
+</style>
