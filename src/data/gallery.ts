@@ -17,6 +17,9 @@ import forestRoad from '../assets/village/20240515-183506.jpg';
 import bayMorning from '../assets/village/20240602-061544.jpg';
 import coastalPlain from '../assets/village/20240602-061555.jpg';
 import akamasView from '../assets/village/beautiful-akamas-from-lysos.jpg';
+import figsDrying from '../assets/village/maxilles.jpg';
+import elderWaving from '../assets/village/whatsapp-image-2026-09-02-at-00-04-31.jpg';
+import fountainArches from '../assets/village/12-04-5.jpg';
 
 export interface Photo {
   image: ImageMetadata;
@@ -47,6 +50,45 @@ export const dusk: Photo = {
   caption: {
     en: 'The last light goes down over the sea. Then the sky below begins.',
     el: 'Το τελευταίο φως πέφτει πάνω από τη θάλασσα. Μετά αρχίζει ο ουρανός πιο κάτω.',
+  },
+};
+
+/** Maxilles being made: the fresh figs, and the split ones drying behind. */
+export const figs: Photo = {
+  image: figsDrying,
+  alt: {
+    en: 'Fresh figs laid out on pine needles in the sun, with split figs drying behind them.',
+    el: 'Φρέσκα σύκα απλωμένα σε πευκοβελόνες στον ήλιο, με ανοιγμένα σύκα να στεγνώνουν πιο πίσω.',
+  },
+};
+
+/**
+ * A well-known figure of the village festivals, long since passed away.
+ * A village photograph, supplied by Kleo. His name is not recorded here yet —
+ * the caption says so rather than leaving him an anonymous decoration.
+ */
+export const elder: Photo = {
+  image: elderWaving,
+  alt: {
+    en: 'An older man in traditional Cypriot dress, one hand raised in greeting, the other on his stick, before a whitewashed wall and green shutters.',
+    el: 'Ηλικιωμένος άνδρας με παραδοσιακή κυπριακή φορεσιά, το ένα χέρι σηκωμένο σε χαιρετισμό, το άλλο στο μπαστούνι του, μπροστά σε ασβεστωμένο τοίχο και πράσινα παντζούρια.',
+  },
+  caption: {
+    en: 'And the village said it in person too. One of the familiar figures of the Lysos festivals, gone many years now. If you know his name, the village would like it written down.',
+    el: 'Και το χωριό το έλεγε και από κοντά. Μια από τις γνώριμες μορφές των πανηγυριών του Λυσού, χαμένη εδώ και πολλά χρόνια. Αν ξέρετε το όνομά του, το χωριό θα ήθελε να καταγραφεί.',
+  },
+};
+
+/** The old fountain below the church, close up. */
+export const fountain: Photo = {
+  image: fountainArches,
+  alt: {
+    en: 'The arches of the old stone fountain beneath the church, a cross carved into the wall beside them.',
+    el: 'Οι καμάρες της παλιάς πέτρινης βρύσης κάτω από την εκκλησία, με έναν σταυρό σκαλισμένο στον τοίχο δίπλα τους.',
+  },
+  caption: {
+    en: 'The fountain the village drew from, under the church that watches it.',
+    el: 'Η βρύση απ᾽ όπου έπαιρνε νερό το χωριό, κάτω από την εκκλησία που τη φυλάει.',
   },
 };
 
