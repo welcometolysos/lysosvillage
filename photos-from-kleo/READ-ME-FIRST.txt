@@ -1,0 +1,32 @@
+DROP YOUR PHOTOS IN HERE
+========================
+
+Two folders:
+
+  old-photos\   ->  Old / archive photos of Lysos, for "Then & Now"
+  new-photos\   ->  Any recent photos: churches, village, forest, people
+
+HOW:
+  Just drag the photo files into the right folder. That's it.
+  Straight off your phone, WhatsApp, camera, anywhere.
+
+DON'T WORRY ABOUT:
+  - File size (they can be huge, I shrink them)
+  - File names (rename them if you like, but you don't have to)
+  - Format (jpg, png, heic, whatever)
+  - How many
+
+HELPFUL IF YOU CAN (but not required):
+  For OLD photos especially, if you know roughly what/when/where,
+  either put it in the filename:
+      1950s-main-street.jpg
+      grandmother-at-the-fountain-1963.jpg
+  or just tell Claude in the chat afterwards.
+
+  For "Then & Now" to work best, old photos of places that still
+  exist today are gold - the church, the fountain, the square, the
+  main street - because I can pair them with a photo of the same
+  spot now.
+
+WHEN DONE:
+  Tell Claude "photos are in" and I'll take it from there.

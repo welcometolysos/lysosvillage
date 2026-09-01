@@ -1,6 +1,7 @@
 ---
 import Section from './Section.astro';
 import Map from './Map.astro';
+import Churches from './Churches.astro';
 import { useTranslations, type Lang } from '../i18n/ui';
 
 interface Props {
@@ -25,11 +26,12 @@ const soon = t('soon');
   id="churches"
   kicker={t('churches.kicker')}
   title={t('churches.title')}
-  note={t('churches.note')}
   soonLabel={soon}
   raised
 >
   <p class="lede">{t('churches.body')}</p>
+
+  <Churches lang={lang} />
 </Section>
 
 <Section
@@ -123,6 +125,10 @@ const soon = t('soon');
     font-size: var(--step-0);
     color: var(--ink-soft);
     line-height: 1.65;
+  }
+
+  .lede + :global(ul.grid) {
+    margin-top: clamp(1.75rem, 4vw, 2.5rem);
   }
 
   /* The body wrapper caps at --measure; cards want the full width */

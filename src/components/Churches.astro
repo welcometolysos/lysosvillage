@@ -1,0 +1,222 @@
+---
+import { Image } from 'astro:assets';
+import { churches } from '../data/churches';
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<ul class="grid">
+  {
+    churches.map((church, i) => (
+      <li>
+        <details class="church" name="church">
+          <summary>
+            <Image
+              src={church.image}
+              alt={church.name[lang]}
+              widths={[320, 480, 640]}
+              sizes="(min-width: 980px) 300px, (min-width: 620px) 45vw, 92vw"
+              format="webp"
+              quality={72}
+              loading={i < 2 ? 'eager' : 'lazy'}
+              class="shot"
+            />
+
+            <div class="meta">
+              <h3>{church.name[lang]}</h3>
+              <p class="hook">{church.hook[lang]}</p>
+              <span class="more">
+                <span class="more-open">{t('churches.readMore')}</span>
+                <span class="more-close">{t('churches.close')}</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </div>
+          </summary>
+
+          <div class="detail">
+            <p>{church.detail[lang]}</p>
+
+            {church.official && (
+              <a href={church.official} target="_blank" rel="noopener noreferrer">
+                {t('churches.source')}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M15 3h6v6M10 14L21 3" stroke-linecap="round" stroke-linejoin="round" />
+                  <path
+                    d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            )}
+
+            {church.needsResearch && <p class="help">{t('churches.help')}</p>}
+          </div>
+        </details>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .grid {
+    list-style: none;
+    display: grid;
+    gap: clamp(1rem, 2.5vw, 1.4rem);
+    width: min(100%, 66rem);
+  }
+
+  @media (min-width: 620px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 980px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .church {
+    height: 100%;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: rgba(240, 233, 216, 0.03);
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+
+  .church:hover,
+  .church[open] {
+    border-color: rgba(219, 164, 65, 0.4);
+  }
+
+  summary {
+    display: block;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .shot {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    /* Pull the daylight photos towards the site's warm-dark world */
+    filter: brightness(0.82) saturate(0.72) contrast(1.04) sepia(0.16);
+    transition: filter 0.3s ease;
+  }
+
+  .church:hover .shot,
+  .church[open] .shot {
+    filter: brightness(0.95) saturate(0.85) contrast(1.02) sepia(0.08);
+  }
+
+  .meta {
+    padding: clamp(1rem, 2.5vw, 1.3rem);
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--gold-soft);
+  }
+
+  .hook {
+    margin-top: 0.5rem;
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.9rem;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .more svg {
+    width: 15px;
+    height: 15px;
+    transition: rotate 0.25s ease;
+  }
+
+  .church[open] .more svg {
+    rotate: 180deg;
+  }
+
+  .more-close {
+    display: none;
+  }
+
+  .church[open] .more-open {
+    display: none;
+  }
+
+  .church[open] .more-close {
+    display: inline;
+  }
+
+  .detail {
+    padding: 0 clamp(1rem, 2.5vw, 1.3rem) clamp(1.1rem, 2.5vw, 1.4rem);
+  }
+
+  .detail p {
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .detail a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 44px;
+    margin-top: 0.7rem;
+    color: var(--gold);
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(219, 164, 65, 0.35);
+  }
+
+  .detail a:hover {
+    border-bottom-color: var(--gold);
+  }
+
+  .detail a svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .help {
+    margin-top: 0.9rem;
+    padding: 0.8rem 1rem;
+    border: 1px dashed rgba(219, 164, 65, 0.35);
+    border-radius: 10px;
+    background: rgba(219, 164, 65, 0.06);
+    color: var(--gold-soft);
+    font-size: 0.92rem;
+  }
+</style>

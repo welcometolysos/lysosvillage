@@ -57,8 +57,11 @@ export const ui = {
     'churches.kicker': 'Nine churches & chapels',
     'churches.title': 'Where the village begins',
     'churches.body':
-      'Panagia Chryseleousa is the mother church — late 15th to early 16th century, Frank-Byzantine, with Gothic arches. Around it stand the chapels the village has kept and rebuilt across generations.',
-    'churches.note': 'Each church gets its own photograph, history and place on the map.',
+      'Panagia Chryseleousa is the mother church — late 15th to early 16th century, Frank-Byzantine, with Gothic arches. Around it stand the chapels the village has kept and rebuilt across generations: one from the 13th century alone in the forest, one raised on a vow in 2024, one belonging to a settlement that emptied in 1948. Open any of them to read more.',
+    'churches.readMore': 'Read more',
+    'churches.close': 'Close',
+    'churches.source': 'On the village website',
+    'churches.help': 'Do you know this chapel’s story? The village would like to record it.',
 
     // — Sacred Sky —
     'sky.nav': 'Sacred Sky',
@@ -156,9 +159,11 @@ export const ui = {
     'churches.kicker': 'Εννιά εκκλησίες & ξωκλήσια',
     'churches.title': 'Εκεί που αρχίζει το χωριό',
     'churches.body':
-      'Η Παναγία η Χρυσελεούσα είναι η μητέρα εκκλησία — τέλη 15ου με αρχές 16ου αιώνα, φραγκοβυζαντινή, με γοτθικές καμάρες. Γύρω της στέκουν τα ξωκλήσια που το χωριό κράτησε και ξανάχτισε από γενιά σε γενιά.',
-    'churches.note':
-      'Κάθε εκκλησία θα αποκτήσει τη δική της φωτογραφία, ιστορία και θέση στον χάρτη.',
+      'Η Παναγία η Χρυσελεούσα είναι η μητέρα εκκλησία — τέλη 15ου με αρχές 16ου αιώνα, φραγκοβυζαντινή, με γοτθικές καμάρες. Γύρω της στέκουν τα ξωκλήσια που το χωριό κράτησε και ξανάχτισε από γενιά σε γενιά: ένα του 13ου αιώνα μόνο μέσα στο δάσος, ένα χτισμένο από τάμα το 2024, ένα ενός οικισμού που ερήμωσε το 1948. Ανοίξτε όποιο θέλετε για να διαβάσετε περισσότερα.',
+    'churches.readMore': 'Διαβάστε περισσότερα',
+    'churches.close': 'Κλείσιμο',
+    'churches.source': 'Στην ιστοσελίδα του χωριού',
+    'churches.help': 'Ξέρετε την ιστορία αυτού του ξωκλησιού; Το χωριό θα ήθελε να την καταγράψει.',
 
     // — Sacred Sky —
     'sky.nav': 'Ιερός Ουρανός',
