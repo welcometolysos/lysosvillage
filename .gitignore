@@ -23,3 +23,8 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 scripts/.hyg-cache.csv
+
+# working images generated for review, not part of the site
+contact-sheet.jpg
+chryseleousa-compare.jpg
+photo-4-which-church.jpg

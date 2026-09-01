@@ -13,7 +13,8 @@
     "prebuild": "node scripts/copy-leaflet-css.mjs",
     "predev": "node scripts/copy-leaflet-css.mjs",
     "map": "node scripts/build-map.mjs",
-    "sky": "node scripts/build-sky.mjs"
+    "sky": "node scripts/build-sky.mjs",
+    "photos": "node scripts/import-photos.mjs"
   },
   "dependencies": {
     "astro": "^7.2.10",

@@ -10,7 +10,10 @@
  * needs writing.
  */
 
-import panagiaChryseleousa from '../assets/churches/panagia-chryseleousa.jpg';
+// Kleo's golden-hour photograph, confirmed by him as the main church.
+// The earlier daytime shot is kept at churches/panagia-chryseleousa.jpg for
+// when she gets a fuller page of her own.
+import panagiaChryseleousa from '../assets/village/20240414-185312.jpg';
 import agiosRafail from '../assets/churches/saints-raphael.jpg';
 import archangelosMichail from '../assets/churches/archangel-michael.jpg';
 import agiosGeorgios from '../assets/churches/saint-george.jpg';
