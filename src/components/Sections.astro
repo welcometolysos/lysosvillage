@@ -4,6 +4,9 @@ import Map from './Map.astro';
 import Churches from './Churches.astro';
 import SacredSky from './SacredSky.astro';
 import Discover from './Discover.astro';
+import Figure from './Figure.astro';
+import PhotoBand from './PhotoBand.astro';
+import { welcomeSign, dusk } from '../data/gallery';
 import { useTranslations, type Lang } from '../i18n/ui';
 
 interface Props {
@@ -22,6 +25,8 @@ const soon = t('soon');
   soonLabel={soon}
 >
   <p class="lede">{t('welcome.body')}</p>
+
+  <Figure photo={welcomeSign} lang={lang} shape="wide" />
 </Section>
 
 <Section
@@ -43,6 +48,8 @@ const soon = t('soon');
   soonLabel={soon}
 >
   <p class="lede">{t('sky.body')}</p>
+
+  <Figure photo={dusk} lang={lang} shape="wide" />
 
   <SacredSky lang={lang} />
 </Section>
@@ -96,6 +103,8 @@ const soon = t('soon');
   </div>
 
   <Map lang={lang} />
+
+  <PhotoBand lang={lang} />
 </Section>
 
 <Section

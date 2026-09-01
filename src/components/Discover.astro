@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import forest from '../assets/paphos-forest.jpg';
+import { crops, forest } from '../data/gallery';
 import { discoveries } from '../data/discover';
 import { useTranslations, type Lang } from '../i18n/ui';
 
@@ -11,9 +11,12 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
-// Only Nature has a photograph we can honestly use. The other two are
-// text-led until Kleo sends pictures of the figs and of Digenis's stone.
-const photos: Record<string, ImageMetadata | undefined> = { nature: forest };
+// Legends still has no photograph — we have nothing of Digenis's stone — so it
+// keeps its designed plate rather than borrowing an unrelated picture.
+const photos: Record<string, ImageMetadata | undefined> = {
+  nature: forest.image,
+  food: crops.image,
+};
 ---
 
 <ul class="grid">

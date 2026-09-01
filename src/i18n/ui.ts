@@ -46,6 +46,8 @@ export const ui = {
     soon: 'In progress',
 
     // — Welcome —
+    'around.title': 'Around the village',
+    'around.hint': 'Swipe for more',
     'welcome.nav': 'Welcome',
     'welcome.kicker': 'The village',
     'welcome.title': "Cyprus's largest mountain village",
@@ -159,6 +161,8 @@ export const ui = {
     soon: 'Σε εξέλιξη',
 
     // — Welcome —
+    'around.title': 'Γύρω από το χωριό',
+    'around.hint': 'Σύρετε για περισσότερα',
     'welcome.nav': 'Καλωσόρισμα',
     'welcome.kicker': 'Το χωριό',
     'welcome.title': 'Το μεγαλύτερο ορεινό χωριό της Κύπρου',
