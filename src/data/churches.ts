@@ -66,7 +66,10 @@ export const churches: Church[] = [
   },
   {
     id: 'rafail',
-    pos: { lat: 34.99544, lon: 32.51148, source: 'approx' },
+    // Not on any map under its own name — too new. Located from Kleo's
+    // Google Maps screenshots, matched to the new chapel OpenStreetMap has
+    // here, and confirmed by him.
+    pos: { lat: 34.9981, lon: 32.52789, source: 'osm' },
     image: agiosRafail,
     name: { en: 'Saint Raphael', el: 'Άγιος Ραφαήλ' },
     short: { en: 'Raphael', el: 'Ραφαήλ' },

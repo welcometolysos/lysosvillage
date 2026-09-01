@@ -153,7 +153,24 @@ console.log(
 // ---------------------------------------------------------------- churches
 
 const churchSrc = await readFile('src/data/churches.ts', 'utf8');
-const ids = [...churchSrc.matchAll(/id: '([a-z]+)',\s*\n\s*pos: \{ lat: ([\d.]+), lon: ([\d.]+), source: '(\w+)' \}/g)];
+// Pull each church id and position out of churches.ts. Done by plain scan
+// rather than a regex: entries carry comment lines between the id and the
+// position, and a regex loose enough to skip them is a regex that quietly
+// matches the wrong thing.
+const ids = churchSrc
+  .split("id: '")
+  .slice(1)
+  .map((chunk) => {
+    const id = chunk.slice(0, chunk.indexOf("'"));
+    const at = chunk.indexOf('pos: { lat: ');
+    if (at === -1) return null;
+    const body = chunk.slice(at, chunk.indexOf('}', at));
+    const nums = body.match(/[0-9]+[.][0-9]+/g) || [];
+    const src = body.includes("'approx'") ? 'approx' : 'osm';
+    if (nums.length < 2) return null;
+    return [null, id, nums[0], nums[1], src];
+  })
+  .filter(Boolean);
 if (ids.length !== 9) throw new Error(`expected 9 churches with positions, found ${ids.length}`);
 
 const anchor = ids.find((m) => m[1] === 'chryseleousa');
