@@ -28,3 +28,6 @@ scripts/.hyg-cache.csv
 contact-sheet.jpg
 chryseleousa-compare.jpg
 photo-4-which-church.jpg
+
+# third-party images that are not ours to publish or redistribute
+photos-from-kleo/**/*greekreporter*
