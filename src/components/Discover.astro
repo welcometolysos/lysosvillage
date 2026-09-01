@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { figs, forest } from '../data/gallery';
+import DigenisMark from './DigenisMark.astro';
 import { discoveries } from '../data/discover';
 import { useTranslations, type Lang } from '../i18n/ui';
 
@@ -27,10 +28,12 @@ const photos: Record<string, ImageMetadata | undefined> = {
         <li>
           <details class="find" name="discover">
             <summary>
-              {/* No photograph for this one yet, so it gets a designed plate
-                  rather than an empty gap: the rising light of the hero,
-                  drawn as arcs. Gradient is CSS, so no id collisions. */}
-              {!photo && (
+              {/* Legends gets its own drawn mark: Digenis's footstep in the
+                  rock, the thing Lysos actually has. Replaced the moment
+                  Kleo photographs the real stone. */}
+              {d.id === 'legends' && <DigenisMark />}
+
+              {!photo && d.id !== 'legends' && (
                 <div class="plate" aria-hidden="true">
                   <svg viewBox="0 0 200 125" preserveAspectRatio="xMidYMid slice">
                     <circle cx="100" cy="125" r="34" />
