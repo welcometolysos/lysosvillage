@@ -1,0 +1,138 @@
+---
+import { sections, useTranslations, localePath, type Lang, type UIKey } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const home = localePath('/', lang);
+
+/**
+ * One clear "Sections" button rather than eight tiny links.
+ * Kinder for older visitors, and it never crowds on a phone.
+ * Built on <details> so it works with no JavaScript at all.
+ */
+const items = sections.map((s) => ({
+  id: s,
+  label: t(`${s}.nav` as UIKey),
+}));
+---
+
+<details class="menu" name="sitemenu">
+  <summary aria-label={t('nav.menu')}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+      <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"></path>
+    </svg>
+    <span>{t('nav.menu')}</span>
+  </summary>
+
+  <nav class="panel" aria-label={t('nav.menu')}>
+    <ul>
+      {
+        items.map(({ id, label }) => (
+          <li>
+            <a href={`${home}#${id}`}>{label}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</details>
+
+<script is:inline>
+  // Close the menu after a jump, so the page isn't left covered.
+  document.querySelectorAll('.menu .panel a').forEach((a) => {
+    a.addEventListener('click', () => a.closest('details')?.removeAttribute('open'));
+  });
+</script>
+
+<style>
+  .menu {
+    position: relative;
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink-soft);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    transition: color 0.18s ease, border-color 0.18s ease;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary:hover,
+  [open] > summary {
+    color: var(--gold);
+    border-color: rgba(219, 164, 65, 0.45);
+  }
+
+  summary svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  /* Hide the word on very narrow phones — the icon carries it */
+  @media (max-width: 400px) {
+    summary span {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+  }
+
+  .panel {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    right: 0;
+    z-index: 60;
+    min-width: 15rem;
+    padding: 0.5rem;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .panel a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0.5rem 0.9rem;
+    border-radius: 9px;
+    color: var(--ink);
+    font-size: 1.02rem;
+    text-decoration: none;
+  }
+
+  .panel a:hover {
+    background: rgba(219, 164, 65, 0.12);
+    color: var(--gold);
+  }
+</style>

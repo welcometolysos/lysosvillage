@@ -1,0 +1,91 @@
+---
+/**
+ * Shared wrapper so every section on the long scroll page shares the same
+ * rhythm: kicker, big serif title, generous body, optional "in progress" chip.
+ */
+interface Props {
+  id: string;
+  kicker: string;
+  title: string;
+  /** Optional honest note about what is still missing from this section. */
+  note?: string;
+  soonLabel?: string;
+  /** Slightly raised panel background, to break up the long scroll. */
+  raised?: boolean;
+}
+
+const { id, kicker, title, note, soonLabel, raised = false } = Astro.props;
+---
+
+<section id={id} class:list={['section', { raised }]}>
+  <div class="wrap">
+    <header class="head">
+      <p class="kicker">{kicker}</p>
+      <h2>{title}</h2>
+    </header>
+
+    <div class="body">
+      <slot />
+    </div>
+
+    {
+      note && (
+        <p class="note">
+          <span class="chip">{soonLabel}</span>
+          {note}
+        </p>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .section {
+    padding-block: clamp(3.5rem, 11vw, 7rem);
+    border-top: 1px solid var(--line);
+    scroll-margin-top: 64px;
+  }
+
+  .raised {
+    background: var(--stone-2);
+  }
+
+  .head {
+    max-width: 30rem;
+  }
+
+  h2 {
+    font-size: var(--step-2);
+    margin-top: 0.5rem;
+  }
+
+  .body {
+    margin-top: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .note {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 0.8rem;
+    margin-top: clamp(2rem, 5vw, 3rem);
+    padding-top: 1.25rem;
+    border-top: 1px dashed var(--line);
+    max-width: var(--measure);
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+
+  .chip {
+    flex: none;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid rgba(219, 164, 65, 0.4);
+    border-radius: 999px;
+    background: rgba(219, 164, 65, 0.1);
+    color: var(--gold);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+</style>

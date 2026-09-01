@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import LanguageSwitch from '../components/LanguageSwitch.astro';
+import Nav from '../components/Nav.astro';
 import { useTranslations, type Lang } from '../i18n/ui';
 
 interface Props {
@@ -58,7 +59,10 @@ const pageDesc = description ?? t('site.description');
           <span class="brand-name">{t('site.name')}</span>
           <span class="brand-region">{t('site.region')}</span>
         </a>
-        <LanguageSwitch lang={lang} path={path} />
+        <div class="head-tools">
+          <Nav lang={lang} />
+          <LanguageSwitch lang={lang} path={path} />
+        </div>
       </div>
     </header>
 
@@ -94,6 +98,12 @@ const pageDesc = description ?? t('site.description');
     gap: 1rem;
     min-height: 64px;
     padding-block: 0.6rem;
+  }
+
+  .head-tools {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .brand {
