@@ -20,6 +20,10 @@ import akamasView from '../assets/village/beautiful-akamas-from-lysos.jpg';
 import figsDrying from '../assets/village/maxilles.jpg';
 import elderWaving from '../assets/village/whatsapp-image-2026-09-02-at-00-04-31.jpg';
 import fountainArches from '../assets/village/12-04-5.jpg';
+import sunThroughOak from '../assets/village/12-04-13.jpg';
+import oldOak from '../assets/village/12-04-12.jpg';
+import greenTunnel from '../assets/village/12-04-9.jpg';
+import windingRoad from '../assets/village/whatsapp-image-2026-09-02-at-00-09-06.jpg';
 
 export interface Photo {
   image: ImageMetadata;
@@ -166,14 +170,47 @@ export const around: Photo[] = [
     },
   },
   {
-    image: hazyValley,
+    image: sunThroughOak,
     alt: {
-      en: 'Green valleys and terraces receding into haze below the village.',
-      el: 'Πράσινες κοιλάδες και πεζούλες που χάνονται στην καταχνιά κάτω από το χωριό.',
+      en: 'The sun breaking through the branches of an old oak above a mown field.',
+      el: 'Ο ήλιος που σπάει μέσα από τα κλαδιά μιας γέρικης βελανιδιάς πάνω από θερισμένο χωράφι.',
     },
     caption: {
-      en: 'Valley after valley, into the haze.',
-      el: 'Κοιλάδα μετά την κοιλάδα, μέσα στην καταχνιά.',
+      en: 'Late sun, through the oak.',
+      el: 'Απογευματινός ήλιος, μέσα από τη βελανιδιά.',
+    },
+  },
+  {
+    image: oldOak,
+    alt: {
+      en: 'A broad old oak standing at the bend of a track through the woods.',
+      el: 'Μια πλατιά γέρικη βελανιδιά στη στροφή ενός μονοπατιού μέσα στο δάσος.',
+    },
+    caption: {
+      en: 'The oak has the bend of the track to itself.',
+      el: 'Η βελανιδιά έχει δική της τη στροφή του δρόμου.',
+    },
+  },
+  {
+    image: greenTunnel,
+    alt: {
+      en: 'A track running under a closed canopy of green trees.',
+      el: 'Μονοπάτι που περνά κάτω από κλειστή πράσινη σκεπή δέντρων.',
+    },
+    caption: {
+      en: 'In spring the trees close over the road.',
+      el: 'Την άνοιξη τα δέντρα κλείνουν πάνω από τον δρόμο.',
+    },
+  },
+  {
+    image: windingRoad,
+    alt: {
+      en: 'A forest road winding out of sight between banks of pine and red earth.',
+      el: 'Δασικός δρόμος που στρίβει και χάνεται ανάμεσα σε πεύκα και κόκκινο χώμα.',
+    },
+    caption: {
+      en: 'The road into the forest, going on without you.',
+      el: 'Ο δρόμος προς το δάσος, που συνεχίζει χωρίς εσένα.',
     },
   },
 ];
