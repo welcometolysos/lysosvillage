@@ -55,6 +55,14 @@ export const ui = {
       'Lysos sits at 560 metres in the Paphos Forest, high above the valleys that run down to the Akamas. Around the church of Panagia Chryseleousa the village has kept its stories, its chapels and its people through the centuries.',
 
     // — Churches —
+    'fountain.kicker': 'The heart of the village',
+    'fountain.title': 'The Great Fountain',
+    'fountain.p1':
+      'It stands beneath the village church, and it is the most emblematic place in Lysos. Built in 1942 in traditional stone, it was for decades the village’s main supply of water.',
+    'fountain.p2':
+      'From it people carried water for the house, washed their clothes, watered their gardens and their animals. It was where the village met — a place of talk, of cooperation, of helping one another.',
+    'fountain.p3':
+      'With respect for the history of the place, the space has since been renovated and given new life. A playground stands beside the fountain now, and the whole area is somewhere to gather, for young and old alike — hosting cultural events and festivals that tie the old life of the village to the new.',
     'churches.nav': 'Churches',
     'churches.kicker': 'Nine churches & chapels',
     'churches.title': 'Where the village begins',
@@ -170,6 +178,14 @@ export const ui = {
       'Ο Λυσός βρίσκεται στα 560 μέτρα, μέσα στο Δάσος της Πάφου, ψηλά πάνω από τις κοιλάδες που κατεβαίνουν προς τον Ακάμα. Γύρω από την εκκλησία της Παναγίας Χρυσελεούσας, το χωριό κράτησε τις ιστορίες του, τα ξωκλήσια του και τους ανθρώπους του μέσα στους αιώνες.',
 
     // — Churches —
+    'fountain.kicker': 'Η καρδιά του χωριού',
+    'fountain.title': 'Η Μεγάλη Βρύση',
+    'fountain.p1':
+      'Βρίσκεται κάτω από την εκκλησία του χωριού και θεωρείται το πιο εμβληματικό σημείο του Λυσού. Χτισμένη το 1942 με παραδοσιακή πέτρινη αρχιτεκτονική, υπήρξε για δεκαετίες το κύριο σημείο υδροδότησης του χωριού.',
+    'fountain.p2':
+      'Από εκεί κουβαλούσαν νερό για τις ανάγκες του σπιτιού, έπλεναν τα ρούχα τους, πότιζαν τους κήπους και τα ζώα τους. Ήταν τόπος συνάντησης, επικοινωνίας, συνεργασίας και αλληλοβοήθειας.',
+    'fountain.p3':
+      'Με σεβασμό στην ιστορία του τόπου, ο χώρος ανακαινίστηκε και απέκτησε νέα ζωή. Δίπλα στη βρύση δημιουργήθηκε παιδική χαρά, ενώ όλη η περιοχή είναι πλέον τόπος αναψυχής και χαράς για μικρούς και μεγάλους. Εδώ φιλοξενούνται πολιτιστικές εκδηλώσεις και πανηγύρια, στιγμές που ενώνουν την παράδοση με τη σύγχρονη ζωή του χωριού.',
     'churches.nav': 'Εκκλησίες',
     'churches.kicker': 'Εννιά εκκλησίες & ξωκλήσια',
     'churches.title': 'Εκεί που αρχίζει το χωριό',

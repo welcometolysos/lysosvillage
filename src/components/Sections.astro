@@ -6,7 +6,8 @@ import SacredSky from './SacredSky.astro';
 import Discover from './Discover.astro';
 import Figure from './Figure.astro';
 import PhotoBand from './PhotoBand.astro';
-import { welcomeSign, dusk, elder, fountain } from '../data/gallery';
+import GreatFountain from './GreatFountain.astro';
+import { welcomeSign, dusk, elder } from '../data/gallery';
 import { useTranslations, type Lang } from '../i18n/ui';
 
 interface Props {
@@ -40,7 +41,7 @@ const soon = t('soon');
 >
   <p class="lede">{t('churches.body')}</p>
 
-  <Figure photo={fountain} lang={lang} shape="wide" />
+  <GreatFountain lang={lang} />
 
   <Churches lang={lang} />
 </Section>

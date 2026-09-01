@@ -1,0 +1,112 @@
+---
+import { Image } from 'astro:assets';
+import { fountain } from '../data/gallery';
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<!--
+  Kleo's own account of the Great Fountain — the only part of the site whose
+  words come from the village rather than from a record. It is not a church, so
+  it gets its own panel above them rather than being squeezed into a caption.
+-->
+<article class="fountain">
+  <div class="shot">
+    <Image
+      src={fountain.image}
+      alt={fountain.alt[lang]}
+      widths={[520, 800, 1100]}
+      sizes="(min-width: 900px) 520px, 94vw"
+      format="webp"
+      quality={76}
+      loading="lazy"
+    />
+  </div>
+
+  <div class="words">
+    <p class="kicker">{t('fountain.kicker')}</p>
+    <h3>{t('fountain.title')}</h3>
+    <p>{t('fountain.p1')}</p>
+    <p>{t('fountain.p2')}</p>
+    <p class="now">{t('fountain.p3')}</p>
+  </div>
+</article>
+
+<style>
+  .fountain {
+    width: min(100%, 66rem);
+    margin: 0 0 clamp(2.5rem, 6vw, 4rem);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(240, 233, 216, 0.03);
+    overflow: hidden;
+  }
+
+  @media (min-width: 900px) {
+    .fountain {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+  }
+
+  .shot {
+    height: 100%;
+  }
+
+  .shot :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.88) saturate(0.76) contrast(1.03) sepia(0.14);
+  }
+
+  /* Stacked on narrow screens, the portrait original runs to a full screen and
+     a half. Crop it rather than let it push the words off the page. */
+  @media (max-width: 899px) {
+    .shot :global(img) {
+      aspect-ratio: 5 / 4;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .shot :global(img) {
+      min-height: 420px;
+    }
+  }
+
+  .words {
+    padding: clamp(1.4rem, 3.5vw, 2.4rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.9rem;
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: var(--step-2);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--gold-soft);
+    margin-bottom: 0.2rem;
+  }
+
+  .words p:not(.kicker) {
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+    line-height: 1.6;
+  }
+
+  /* the paragraph about what it is now, rather than what it was */
+  .now {
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--line);
+  }
+</style>
