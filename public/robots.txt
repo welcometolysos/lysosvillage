@@ -1,0 +1,7 @@
+# The village is still being built — please don't index it yet.
+# To launch: set HIDE_FROM_SEARCH = false in src/site.ts and replace
+# this file's contents with:
+#   User-agent: *
+#   Allow: /
+User-agent: *
+Disallow: /

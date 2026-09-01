@@ -3,6 +3,7 @@ import '../styles/global.css';
 import LanguageSwitch from '../components/LanguageSwitch.astro';
 import Nav from '../components/Nav.astro';
 import { useTranslations, type Lang } from '../i18n/ui';
+import { HIDE_FROM_SEARCH } from '../site';
 
 interface Props {
   lang: Lang;
@@ -28,6 +29,7 @@ const pageDesc = description ?? t('site.description');
     <meta name="description" content={pageDesc} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="theme-color" content="#12100b" />
+    {HIDE_FROM_SEARCH && <meta name="robots" content="noindex, nofollow" />}
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
