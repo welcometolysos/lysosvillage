@@ -1,0 +1,214 @@
+---
+import { Image } from 'astro:assets';
+import mapImage from '../assets/lysos-map.png';
+import mapData from '../map-data.json';
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const { lat, lon, zoom, pin } = mapData;
+
+// Opens whatever maps app the visitor actually has.
+const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
+const biggerHref = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=${zoom}/${lat}/${lon}`;
+---
+
+<figure class="mapcard">
+  <div class="frame">
+    <Image
+      src={mapImage}
+      alt={t('visit.map.alt')}
+      widths={[512, 768, 1024]}
+      sizes="(min-width: 900px) 900px, 100vw"
+      format="webp"
+      quality={80}
+      loading="lazy"
+      class="mapimg"
+    />
+
+    <!-- Positioned from the real projected coordinates, not eyeballed. -->
+    <div class="pin" style={`left:${pin.leftPct}%; top:${pin.topPct}%`}>
+      <span class="dot" aria-hidden="true"></span>
+      <span class="label">{t('site.name')}</span>
+    </div>
+
+    <p class="attrib">{mapData.attribution}</p>
+  </div>
+
+  <figcaption class="actions">
+    <a class="btn primary" href={directionsHref} target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <path d="M3 11l19-9-9 19-2-8-8-2z" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      {t('visit.directions')}
+    </a>
+
+    <a class="btn" href={biggerHref} target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <path d="M15 3h6v6M10 14L21 3" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path
+          d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+      {t('visit.bigmap')}
+    </a>
+
+    <p class="coords">{lat}°N · {lon}°E · 560 m</p>
+  </figcaption>
+</figure>
+
+<style>
+  .mapcard {
+    width: min(100%, 60rem);
+    margin: clamp(1.75rem, 4vw, 2.5rem) 0 0;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: rgba(240, 233, 216, 0.03);
+    overflow: hidden;
+  }
+
+  .frame {
+    position: relative;
+    /* Tall-ish on phones, wide on desktop — the village stays centred either way */
+    aspect-ratio: 4 / 3;
+    background: var(--stone-2);
+  }
+
+  @media (min-width: 700px) {
+    .frame {
+      aspect-ratio: 16 / 9;
+    }
+  }
+
+  .mapimg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* OpenStreetMap ships a bright paper map. Inverting and re-warming it
+       turns it into something that belongs in this site's world. */
+    filter: invert(0.9) hue-rotate(180deg) brightness(0.92) contrast(0.88) saturate(0.45)
+      sepia(0.35);
+  }
+
+  .pin {
+    position: absolute;
+    translate: -50% -50%;
+    display: grid;
+    justify-items: center;
+    gap: 0.45rem;
+    pointer-events: none;
+  }
+
+  .dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow:
+      0 0 0 5px rgba(219, 164, 65, 0.25),
+      0 0 0 12px rgba(219, 164, 65, 0.1),
+      0 2px 14px rgba(0, 0, 0, 0.7);
+  }
+
+  .label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-shadow:
+      0 1px 6px var(--stone),
+      0 0 12px var(--stone);
+    white-space: nowrap;
+  }
+
+  /* OpenStreetMap's licence requires visible credit. */
+  .attrib {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 0.3rem 0.6rem;
+    background: rgba(18, 16, 11, 0.7);
+    border-top-left-radius: 8px;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--ink-soft);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.7rem;
+    padding: clamp(1rem, 2.5vw, 1.4rem);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 48px;
+    padding: 0.6rem 1.15rem;
+    border: 1px solid var(--line);
+    border-radius: 11px;
+    background: rgba(240, 233, 216, 0.03);
+    color: var(--ink-soft);
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition:
+      background 0.18s ease,
+      color 0.18s ease,
+      border-color 0.18s ease;
+  }
+
+  .btn:hover {
+    color: var(--ink);
+    border-color: rgba(240, 233, 216, 0.3);
+  }
+
+  .btn.primary {
+    border-color: var(--gold);
+    background: rgba(219, 164, 65, 0.12);
+    color: var(--gold);
+  }
+
+  .btn.primary:hover {
+    background: var(--gold);
+    color: var(--stone);
+  }
+
+  .btn svg {
+    width: 17px;
+    height: 17px;
+    flex: none;
+  }
+
+  .coords {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 620px) {
+    .btn {
+      flex: 1 1 100%;
+      justify-content: center;
+    }
+    .coords {
+      margin-left: 0;
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>

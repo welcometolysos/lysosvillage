@@ -1,0 +1,10 @@
+{
+  "lat": 34.9949,
+  "lon": 32.512,
+  "zoom": 15,
+  "pin": {
+    "leftPct": 49.952,
+    "topPct": 49.952
+  },
+  "attribution": "© OpenStreetMap contributors"
+}

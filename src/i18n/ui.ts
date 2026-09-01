@@ -108,7 +108,10 @@ export const ui = {
     'visit.doing.title': 'What to do',
     'visit.doing.body':
       'Walk the forest trails, follow the wine routes, visit the nine churches and the holy spring and cave of Agios Charalambos.',
-    'visit.note': 'A working map of the village is coming here.',
+    'visit.map.alt':
+      'Map of Lysos and the surrounding Paphos Forest, with the village marked at its centre.',
+    'visit.directions': 'Get directions',
+    'visit.bigmap': 'Open larger map',
 
     // — Ask Lysos —
     'ask.nav': 'Ask Lysos',
@@ -203,7 +206,10 @@ export const ui = {
     'visit.doing.title': 'Τι να κάνεις',
     'visit.doing.body':
       'Περπάτησε τα μονοπάτια του δάσους, ακολούθησε τους δρόμους του κρασιού, επισκέψου τις εννιά εκκλησίες και το αγίασμα και τη σπηλιά του Αγίου Χαραλάμπους.',
-    'visit.note': 'Εδώ έρχεται χάρτης του χωριού που δουλεύει.',
+    'visit.map.alt':
+      'Χάρτης του Λυσού και του γύρω Δάσους της Πάφου, με το χωριό σημειωμένο στο κέντρο.',
+    'visit.directions': 'Οδηγίες διαδρομής',
+    'visit.bigmap': 'Μεγαλύτερος χάρτης',
 
     // — Ask Lysos —
     'ask.nav': 'Ρώτα τον Λυσό',

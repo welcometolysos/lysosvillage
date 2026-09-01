@@ -1,5 +1,6 @@
 ---
 import Section from './Section.astro';
+import Map from './Map.astro';
 import { useTranslations, type Lang } from '../i18n/ui';
 
 interface Props {
@@ -89,7 +90,6 @@ const soon = t('soon');
   id="visit"
   kicker={t('visit.kicker')}
   title={t('visit.title')}
-  note={t('visit.note')}
   soonLabel={soon}
 >
   <div class="cards two">
@@ -102,6 +102,8 @@ const soon = t('soon');
       <p>{t('visit.doing.body')}</p>
     </article>
   </div>
+
+  <Map lang={lang} />
 </Section>
 
 <Section
