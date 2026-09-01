@@ -1,0 +1,294 @@
+---
+import sky from '../data/sky.json';
+import { churches } from '../data/churches';
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const R = 1000; // drawing radius in SVG units
+const VIEW = 2 * R * 1.12; // a little air around the horizon circle
+
+const byId = Object.fromEntries(sky.churches.map((c) => [c.id, c]));
+const churchById = Object.fromEntries(churches.map((c) => [c.id, c]));
+
+/** Dot radius from magnitude: bright stars big, faint ones barely there. */
+function starSize(m: number) {
+  return Math.max(1.1, (5.6 - m) * 1.65);
+}
+function starGlow(m: number) {
+  return Math.max(0.22, Math.min(1, (5.4 - m) / 4.6));
+}
+
+// The handful of famous stars worth naming, so people can orient themselves.
+const NAMED = ['Vega', 'Altair', 'Arcturus', 'Antares', 'Deneb', 'Fomalhaut', 'Spica'];
+const labelled = sky.stars.filter((s) => s.name && NAMED.includes(s.name));
+
+const cardinals = [
+  { label: t('sky.n'), az: 0 },
+  { label: t('sky.e'), az: 90 },
+  { label: t('sky.s'), az: 180 },
+  { label: t('sky.w'), az: 270 },
+];
+---
+
+<figure class="skycard">
+  <div class="disc">
+    <svg
+      viewBox={`${-VIEW / 2} ${-VIEW / 2} ${VIEW} ${VIEW}`}
+      role="img"
+      aria-label={t('sky.alt')}
+    >
+      <defs>
+        <radialGradient id="nightfall">
+          <stop offset="0%" stop-color="#141a2e" />
+          <stop offset="55%" stop-color="#0e1220" />
+          <stop offset="100%" stop-color="#080a12" />
+        </radialGradient>
+        <radialGradient id="churchglow">
+          <stop offset="0%" stop-color="rgb(219 164 65 / 0.55)" />
+          <stop offset="100%" stop-color="rgb(219 164 65 / 0)" />
+        </radialGradient>
+      </defs>
+
+      <circle r={R} fill="url(#nightfall)" />
+
+      <!-- Every one of these is a real star, in its real place over Lysos -->
+      <g class="stars">
+        {
+          sky.stars.map((s) => (
+            <circle
+              cx={s.x * R}
+              cy={s.y * R}
+              r={starSize(s.m)}
+              fill="#f4efe2"
+              opacity={starGlow(s.m)}
+            />
+          ))
+        }
+      </g>
+
+      {
+        labelled.map((s) => (
+          <text class="starname" x={s.x * R + 14} y={s.y * R + 5}>
+            {s.name}
+          </text>
+        ))
+      }
+
+      <!-- The village, lifted off the ground and hung in the sky -->
+      <g class="village">
+        {
+          sky.edges.map(([a, b]) => (
+            <line x1={byId[a].x * R} y1={byId[a].y * R} x2={byId[b].x * R} y2={byId[b].y * R} />
+          ))
+        }
+      </g>
+
+      <g class="churches">
+        {
+          sky.churches.map((c) => {
+            const anchor = c.id === 'chryseleousa';
+            const church = churchById[c.id];
+            return (
+              <a href={`#churches`} aria-label={church?.name[lang]}>
+                <circle
+                  class="halo"
+                  cx={c.x * R}
+                  cy={c.y * R}
+                  r={anchor ? 68 : 44}
+                  fill="url(#churchglow)"
+                />
+                <circle
+                  class:list={['churchstar', { anchor }]}
+                  cx={c.x * R}
+                  cy={c.y * R}
+                  r={anchor ? 13 : 8}
+                />
+                <text
+                  class:list={['churchname', { anchor }]}
+                  x={c.x * R}
+                  y={c.y * R + (anchor ? 52 : -20)}
+                >
+                  {church?.short[lang]}
+                </text>
+              </a>
+            );
+          })
+        }
+      </g>
+
+      <circle class="horizon" r={R} />
+
+      {
+        cardinals.map(({ label, az }) => {
+          const a = ((az - 90) * Math.PI) / 180;
+          return (
+            <text class="cardinal" x={Math.cos(a) * (R + 46)} y={Math.sin(a) * (R + 46) + 10}>
+              {label}
+            </text>
+          );
+        })
+      }
+    </svg>
+  </div>
+
+  <figcaption>
+    <p class="reading">
+      <span class="swatch star" aria-hidden="true"></span>
+      {t('sky.legendStars')}
+    </p>
+    <p class="reading">
+      <span class="swatch church" aria-hidden="true"></span>
+      {t('sky.legendChurches')}
+    </p>
+    <p class="honest">{t('sky.honest')}</p>
+    <p class="stamp">
+      {sky.starCount}
+      {t('sky.starsOn')} · {t('sky.when')}
+    </p>
+  </figcaption>
+</figure>
+
+<style>
+  .skycard {
+    width: min(100%, 62rem);
+    margin: clamp(1.75rem, 4vw, 2.5rem) 0 0;
+  }
+
+  .disc {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #080a12;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .horizon {
+    fill: none;
+    stroke: rgb(219 164 65 / 0.28);
+    stroke-width: 3;
+  }
+
+  .cardinal {
+    fill: var(--ink-soft);
+    font-family: var(--mono);
+    font-size: 42px;
+    letter-spacing: 4px;
+    text-anchor: middle;
+  }
+
+  .starname {
+    fill: rgb(240 233 216 / 0.55);
+    font-family: var(--mono);
+    font-size: 30px;
+    letter-spacing: 2px;
+  }
+
+  .village line {
+    stroke: rgb(219 164 65 / 0.5);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 9 11;
+  }
+
+  .churchstar {
+    fill: var(--gold);
+    stroke: #fff6e2;
+    stroke-width: 2;
+  }
+
+  .churchstar.anchor {
+    fill: #ffe6a8;
+    stroke-width: 3.5;
+  }
+
+  .churchname {
+    fill: rgb(232 192 120 / 0.92);
+    font-family: var(--mono);
+    font-size: 30px;
+    letter-spacing: 2px;
+    text-anchor: middle;
+    paint-order: stroke;
+    stroke: #080a12;
+    stroke-width: 7;
+  }
+
+  .churchname.anchor {
+    fill: #ffe6a8;
+    font-size: 36px;
+  }
+
+  .churches a {
+    cursor: pointer;
+  }
+
+  .churches a:hover .churchstar,
+  .churches a:focus-visible .churchstar {
+    fill: #fff3d6;
+    r: 15;
+  }
+
+  .churches a:hover .halo,
+  .churches a:focus-visible .halo {
+    opacity: 1.6;
+  }
+
+  figcaption {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.5rem;
+    align-items: center;
+    margin-top: 1.1rem;
+  }
+
+  .reading {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+
+  .swatch {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    flex: none;
+  }
+
+  .swatch.star {
+    background: #f4efe2;
+  }
+
+  .swatch.church {
+    background: var(--gold);
+    box-shadow: 0 0 0 4px rgb(219 164 65 / 0.22);
+  }
+
+  .honest {
+    width: 100%;
+    max-width: var(--measure);
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .stamp {
+    width: 100%;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+</style>

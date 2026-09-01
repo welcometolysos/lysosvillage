@@ -27,6 +27,7 @@ export interface Church {
   image: ImageMetadata;
   /** Displayed large. */
   name: { en: string; el: string };
+  /** Short form, for labelling the star map where space is tight. */
   /** The one line that makes someone want to go. */
   hook: { en: string; el: string };
   /** Shown when the card is opened. */
@@ -35,13 +36,21 @@ export interface Church {
   official?: string;
   /** True when we still owe this entry a proper history. */
   needsResearch?: boolean;
+  /**
+   * Real position. 'osm' = taken from OpenStreetMap and cross-checked against
+   * the direction given on lyssos.org.cy. 'approx' = our best placement,
+   * shown as approximate on the site.
+   */
+  pos: { lat: number; lon: number; source: 'osm' | 'approx' };
 }
 
 export const churches: Church[] = [
   {
     id: 'chryseleousa',
+    pos: { lat: 34.99544, lon: 32.51148, source: 'osm' },
     image: panagiaChryseleousa,
     name: { en: 'Panagia Chryseleousa', el: 'Παναγία Χρυσελεούσα' },
+    short: { en: 'Chryseleousa', el: 'Χρυσελεούσα' },
     hook: {
       en: 'The mother church, and the heart the village grew around.',
       el: 'Η μητέρα εκκλησία, η καρδιά γύρω από την οποία μεγάλωσε το χωριό.',
@@ -54,8 +63,10 @@ export const churches: Church[] = [
   },
   {
     id: 'rafail',
+    pos: { lat: 34.99544, lon: 32.51148, source: 'approx' },
     image: agiosRafail,
     name: { en: 'Saint Raphael', el: 'Άγιος Ραφαήλ' },
+    short: { en: 'Raphael', el: 'Ραφαήλ' },
     hook: {
       en: 'Built because one man kept a promise.',
       el: 'Χτίστηκε επειδή ένας άνθρωπος κράτησε το τάμα του.',
@@ -68,8 +79,10 @@ export const churches: Church[] = [
   },
   {
     id: 'michail',
+    pos: { lat: 34.99316, lon: 32.51069, source: 'osm' },
     image: archangelosMichail,
     name: { en: 'Archangel Michael', el: 'Αρχάγγελος Μιχαήλ' },
+    short: { en: 'Michael', el: 'Μιχαήλ' },
     hook: {
       en: 'Medieval walls around an 18th-century iconostasis.',
       el: 'Μεσαιωνικοί τοίχοι γύρω από ένα εικονοστάσι του 18ου αιώνα.',
@@ -82,8 +95,10 @@ export const churches: Church[] = [
   },
   {
     id: 'georgios',
+    pos: { lat: 35.00871, lon: 32.52124, source: 'osm' },
     image: agiosGeorgios,
     name: { en: 'Chapel of Saint George', el: 'Ξωκλήσι Αγίου Γεωργίου' },
+    short: { en: 'George', el: 'Γεώργιος' },
     hook: {
       en: 'Thirteenth century, alone in the forest.',
       el: 'Του 13ου αιώνα, μόνο του μέσα στο δάσος.',
@@ -96,8 +111,10 @@ export const churches: Church[] = [
   },
   {
     id: 'ilias',
+    pos: { lat: 34.99999, lon: 32.50879, source: 'osm' },
     image: agiosIlias,
     name: { en: 'Chapel of Prophet Elias', el: 'Ξωκλήσι Αγίου Ηλία' },
+    short: { en: 'Elias', el: 'Ηλίας' },
     hook: {
       en: 'A new chapel beside medieval ruins and an ancient tree.',
       el: 'Νέο ξωκλήσι δίπλα σε μεσαιωνικά ερείπια και ένα αρχαίο δέντρο.',
@@ -110,8 +127,10 @@ export const churches: Church[] = [
   },
   {
     id: 'merkourios',
+    pos: { lat: 35.03073, lon: 32.54454, source: 'osm' },
     image: agiosMerkourios,
     name: { en: 'Chapel of Saint Mercurius', el: 'Ξωκλήσι Αγίου Μερκουρίου' },
+    short: { en: 'Mercurius', el: 'Μερκούριος' },
     hook: {
       en: 'The church of a village that emptied in 1948.',
       el: 'Η εκκλησία ενός οικισμού που ερήμωσε το 1948.',
@@ -124,8 +143,10 @@ export const churches: Church[] = [
   },
   {
     id: 'konstantinos',
+    pos: { lat: 34.99498, lon: 32.50667, source: 'osm' },
     image: agiosKonstantinos,
     name: { en: 'Saints Constantine and Helen', el: 'Άγιος Κωνσταντίνος και Ελένη' },
+    short: { en: 'Constantine', el: 'Κωνσταντίνος' },
     hook: {
       en: 'Repaired in June 1947 — it says so on the Holy Table.',
       el: 'Επισκευάστηκε τον Ιούνιο του 1947 — το λέει η ίδια η Αγία Τράπεζα.',
@@ -138,11 +159,13 @@ export const churches: Church[] = [
   },
   {
     id: 'charalambos',
+    pos: { lat: 34.97792, lon: 32.52071, source: 'osm' },
     image: agiosCharalambos,
     name: {
       en: 'Holy Spring & Cave of Saint Charalambos',
       el: 'Αγίασμα και Σπήλαιο Αγίου Χαραλάμπους',
     },
+    short: { en: 'Charalambos', el: 'Χαράλαμπος' },
     hook: {
       en: 'Christians and Muslims alike came here to heal their animals.',
       el: 'Χριστιανοί και μουσουλμάνοι έρχονταν εδώ για να γιατρέψουν τα ζώα τους.',
@@ -155,8 +178,10 @@ export const churches: Church[] = [
   },
   {
     id: 'marina',
+    pos: { lat: 34.99817, lon: 32.51443, source: 'osm' },
     image: agiaMarina,
     name: { en: 'Agia Marina', el: 'Αγία Μαρίνα' },
+    short: { en: 'Marina', el: 'Μαρίνα' },
     hook: {
       en: 'The chapel that keeps the village cemetery.',
       el: 'Το ξωκλήσι που φυλάει το κοιμητήριο του χωριού.',

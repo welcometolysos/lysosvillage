@@ -2,6 +2,7 @@
 import Section from './Section.astro';
 import Map from './Map.astro';
 import Churches from './Churches.astro';
+import SacredSky from './SacredSky.astro';
 import { useTranslations, type Lang } from '../i18n/ui';
 
 interface Props {
@@ -38,10 +39,11 @@ const soon = t('soon');
   id="sky"
   kicker={t('sky.kicker')}
   title={t('sky.title')}
-  note={t('sky.note')}
   soonLabel={soon}
 >
   <p class="lede">{t('sky.body')}</p>
+
+  <SacredSky lang={lang} />
 </Section>
 
 <Section

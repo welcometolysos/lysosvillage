@@ -68,8 +68,19 @@ export const ui = {
     'sky.kicker': 'A dark sky village',
     'sky.title': 'The Sacred Sky of Lysos',
     'sky.body':
-      'Far from the coastal glare, the Milky Way still burns over Lysos. The nine churches drawn as a constellation across the real night sky, with Chryseleousa as the anchor star.',
-    'sky.note': 'The night-sky feature is being built.',
+      'Far from the coastal glare, the Milky Way still burns over Lysos. Below is the sky exactly as it stands over the village on the night of the Panagia — every star real, in its real place. Among them hang the nine churches, held in their true positions relative to one another, with Chryseleousa as the anchor.',
+    'sky.alt':
+      'The night sky over Lysos on 15 August, with the nine churches of the village drawn among the real stars.',
+    'sky.honest':
+      'The stars are real, projected for this village and this hour. The churches keep their true bearings from Chryseleousa — a chapel that lies north-east of her on the ground lies north-east of her here. Their distances are drawn closer than they stand, so that the eight churches within the village can be told apart from Agios Merkourios, five kilometres out in the forest.',
+    'sky.legendStars': 'Real stars, in their real places over Lysos',
+    'sky.legendChurches': 'The nine churches — tap one to read its story',
+    'sky.starsOn': 'real stars above the village',
+    'sky.when': '15 August, 22:00 — the night of the Panagia',
+    'sky.n': 'N',
+    'sky.e': 'E',
+    'sky.s': 'S',
+    'sky.w': 'W',
 
     // — Discover —
     'discover.nav': 'Discover',
@@ -170,8 +181,19 @@ export const ui = {
     'sky.kicker': 'Χωριό με σκοτεινό ουρανό',
     'sky.title': 'Ο Ιερός Ουρανός του Λυσού',
     'sky.body':
-      'Μακριά από τα φώτα της παραλίας, ο Γαλαξίας καίει ακόμα πάνω από τον Λυσό. Οι εννιά εκκλησίες σχεδιασμένες σαν αστερισμός στον πραγματικό νυχτερινό ουρανό, με τη Χρυσελεούσα για άστρο-οδηγό.',
-    'sky.note': 'Η ενότητα του νυχτερινού ουρανού είναι υπό κατασκευή.',
+      'Μακριά από τα φώτα της παραλίας, ο Γαλαξίας καίει ακόμα πάνω από τον Λυσό. Πιο κάτω είναι ο ουρανός ακριβώς όπως στέκει πάνω από το χωριό τη νύχτα της Παναγίας — κάθε αστέρι πραγματικό, στη θέση του. Ανάμεσά τους κρέμονται οι εννιά εκκλησίες, στις αληθινές τους θέσεις η μία ως προς την άλλη, με τη Χρυσελεούσα για άγκυρα.',
+    'sky.alt':
+      'Ο νυχτερινός ουρανός πάνω από τον Λυσό στις 15 Αυγούστου, με τις εννιά εκκλησίες του χωριού σχεδιασμένες ανάμεσα στα πραγματικά αστέρια.',
+    'sky.honest':
+      'Τα αστέρια είναι πραγματικά, υπολογισμένα γι᾽ αυτό το χωριό και γι᾽ αυτή την ώρα. Οι εκκλησίες κρατούν τις αληθινές τους κατευθύνσεις από τη Χρυσελεούσα — ένα ξωκλήσι που βρίσκεται βορειοανατολικά της στη γη, βρίσκεται βορειοανατολικά της κι εδώ. Οι αποστάσεις σχεδιάζονται πιο κοντά απ᾽ ό,τι είναι, για να ξεχωρίζουν οι οκτώ εκκλησίες μέσα στο χωριό από τον Άγιο Μερκούριο, πέντε χιλιόμετρα μακριά στο δάσος.',
+    'sky.legendStars': 'Πραγματικά αστέρια, στη θέση τους πάνω από τον Λυσό',
+    'sky.legendChurches': 'Οι εννιά εκκλησίες — πάτησε μία για την ιστορία της',
+    'sky.starsOn': 'πραγματικά αστέρια πάνω από το χωριό',
+    'sky.when': '15 Αυγούστου, 22:00 — η νύχτα της Παναγίας',
+    'sky.n': 'Β',
+    'sky.e': 'Α',
+    'sky.s': 'Ν',
+    'sky.w': 'Δ',
 
     // — Discover —
     'discover.nav': 'Ανακάλυψε',
