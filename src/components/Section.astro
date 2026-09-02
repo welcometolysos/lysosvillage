@@ -65,7 +65,7 @@ const { id, kicker, title, intro, note, soonLabel, raised = false } = Astro.prop
     gap: clamp(1rem, 2.5vw, 1.5rem);
   }
 
-  @media (min-width: 1000px) {
+  @media (min-width: 900px) {
     .top {
       grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
       gap: clamp(2rem, 5vw, 4.5rem);
@@ -84,7 +84,7 @@ const { id, kicker, title, intro, note, soonLabel, raised = false } = Astro.prop
     line-height: 1.65;
   }
 
-  @media (min-width: 1000px) {
+  @media (min-width: 900px) {
     .intro {
       /* optically align the first line with the title beside it */
       padding-top: 0.55rem;

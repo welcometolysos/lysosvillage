@@ -33,7 +33,11 @@
   --step-2: clamp(1.8rem, 2vw + 1.3rem, 2.5rem);
   --step-3: clamp(2.4rem, 5vw + 1.2rem, 4.5rem); /* display */
 
-  --measure: 34rem; /* comfortable line length */
+  --measure: 34rem; /* comfortable line length for PROSE — never widen this */
+  /* The content column. Prose stays at --measure inside it; photos, grids and
+     the star map get the whole thing. Widens on large screens so the page
+     stops being a narrow strip in a sea of black. */
+  --content: 68rem;
   --pad: clamp(1.25rem, 5vw, 3rem);
 }
 
@@ -110,9 +114,21 @@ h3 {
   color: var(--gold);
 }
 
+@media (min-width: 1500px) {
+  :root {
+    --content: 82rem;
+  }
+}
+
+@media (min-width: 1900px) {
+  :root {
+    --content: 92rem;
+  }
+}
+
 .wrap {
   width: 100%;
-  max-width: 68rem;
+  max-width: var(--content);
   margin-inline: auto;
   padding-inline: var(--pad);
 }
