@@ -95,7 +95,7 @@ const cardinals = [
             const anchor = c.id === 'chryseleousa';
             const church = churchById[c.id];
             return (
-              <a href={`#churches`} aria-label={church?.name[lang]}>
+              <a href={`#church-${c.id}`} aria-label={church?.name[lang]}>
                 {/* Invisible, finger-sized hit area: the visible star is 13px
                     across, which is nobody's idea of a tap target. */}
                 <circle class="hit" cx={c.x * R} cy={c.y * R} r={70} />

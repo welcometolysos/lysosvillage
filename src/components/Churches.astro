@@ -15,7 +15,7 @@ const t = useTranslations(lang);
   {
     churches.map((church, i) => (
       <li>
-        <details class="church" name="church">
+        <details class="church" name="church" id={`church-${church.id}`}>
           <summary>
             <Image
               src={church.image}
@@ -66,6 +66,23 @@ const t = useTranslations(lang);
   }
 </ul>
 
+<script>
+  // Arriving from a star on the map, or from a shared link: open the church
+  // that was asked for. Landing on a closed card and having to hunt for it
+  // is exactly what the star was meant to save you.
+  function openTargetChurch() {
+    const id = location.hash.slice(1);
+    if (!id.startsWith("church-")) return;
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.open = true;
+    // wait for the card to expand before scrolling, or it lands short
+    requestAnimationFrame(() => el.scrollIntoView({ block: "start", behavior: "smooth" }));
+  }
+  openTargetChurch();
+  window.addEventListener("hashchange", openTargetChurch);
+</script>
+
 <style>
   .grid {
     list-style: none;
@@ -88,6 +105,8 @@ const t = useTranslations(lang);
 
   .church {
     height: 100%;
+    /* clear the sticky header when jumped to from the star map */
+    scroll-margin-top: 84px;
     border: 1px solid var(--line);
     border-radius: 16px;
     background: rgba(240, 233, 216, 0.03);
