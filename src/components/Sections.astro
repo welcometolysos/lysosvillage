@@ -23,12 +23,10 @@ const soon = t('soon');
   id="welcome"
   kicker={t('welcome.kicker')}
   title={t('welcome.title')}
+  intro={t('welcome.body')}
   soonLabel={soon}
 >
-  <p class="lede">{t('welcome.body')}</p>
-
   <Figure photo={welcomeSign} lang={lang} shape="wide" />
-
   <Figure photo={elder} lang={lang} shape="tall" />
 </Section>
 
@@ -36,13 +34,11 @@ const soon = t('soon');
   id="churches"
   kicker={t('churches.kicker')}
   title={t('churches.title')}
+  intro={t('churches.body')}
   soonLabel={soon}
   raised
 >
-  <p class="lede">{t('churches.body')}</p>
-
   <GreatFountain lang={lang} />
-
   <Churches lang={lang} />
 </Section>
 
@@ -50,12 +46,10 @@ const soon = t('soon');
   id="sky"
   kicker={t('sky.kicker')}
   title={t('sky.title')}
+  intro={t('sky.body')}
   soonLabel={soon}
 >
-  <p class="lede">{t('sky.body')}</p>
-
   <Figure photo={dusk} lang={lang} shape="wide" />
-
   <SacredSky lang={lang} />
 </Section>
 
@@ -73,21 +67,21 @@ const soon = t('soon');
   id="thennow"
   kicker={t('thennow.kicker')}
   title={t('thennow.title')}
+  intro={t('thennow.body')}
   note={t('thennow.note')}
   soonLabel={soon}
 >
-  <p class="lede">{t('thennow.body')}</p>
 </Section>
 
 <Section
   id="wall"
   kicker={t('wall.kicker')}
   title={t('wall.title')}
+  intro={t('wall.body')}
   note={t('wall.note')}
   soonLabel={soon}
   raised
 >
-  <p class="lede">{t('wall.body')}</p>
 </Section>
 
 <Section
@@ -106,9 +100,7 @@ const soon = t('soon');
       <p>{t('visit.doing.body')}</p>
     </article>
   </div>
-
   <Map lang={lang} />
-
   <PhotoBand lang={lang} />
 </Section>
 
@@ -116,11 +108,11 @@ const soon = t('soon');
   id="ask"
   kicker={t('ask.kicker')}
   title={t('ask.title')}
+  intro={t('ask.body')}
   note={t('ask.note')}
   soonLabel={soon}
   raised
 >
-  <p class="lede">{t('ask.body')}</p>
 </Section>
 
 <style>
