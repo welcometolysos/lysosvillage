@@ -18,6 +18,7 @@ export const sections = [
   'churches',
   'sky',
   'discover',
+  'walks',
   'thennow',
   'wall',
   'visit',
@@ -105,6 +106,23 @@ export const ui = {
     'discover.nature.title': 'Forest & wildlife',
     'discover.nature.body':
       'The Paphos Forest at the door: the wild Mouflon, Bonelli’s eagles overhead, and trails through the pines.',
+
+    // — Walks —
+    'walks.nav': 'Walks',
+    'walks.kicker': 'On foot from the village',
+    'walks.title': 'Three ways out of Lysos',
+    'walks.body':
+      'Two circuits that bring you back to where you started, and one long walk along the old road to Kritou Terra. The forest begins where the houses end, so all three start from the village centre.',
+    'walks.time': 'Roughly',
+    'walks.shape': 'Shape',
+    'walks.start': 'Starts',
+    'walks.beforeTitle': 'Before you set out',
+    'walks.b1': 'Carry more water than you think you need. There is nowhere to fill up once you leave the village.',
+    'walks.b2': 'Summer afternoons here are fierce. Walk early, or leave it until the light softens.',
+    'walks.b3': 'These are forest and field tracks, not pavements. Wear something you can turn an ankle in and be glad of.',
+    'walks.b4': 'Phone signal comes and goes among the hills. Tell somebody where you are going.',
+    'walks.note':
+      'Distances come from the Lysos Community Council. Walking times are our own estimate at an unhurried pace — no official grading exists for these routes. Ask in the village before a long one:',
 
     // — Then & Now —
     'thennow.nav': 'Then & Now',
@@ -238,6 +256,23 @@ export const ui = {
     'discover.nature.title': 'Δάσος & άγρια ζωή',
     'discover.nature.body':
       'Το Δάσος της Πάφου στην πόρτα σου: το αγρινό, οι σπιζαετοί από ψηλά, και μονοπάτια μέσα στα πεύκα.',
+
+    // — Walks —
+    'walks.nav': 'Περπάτημα',
+    'walks.kicker': 'Με τα πόδια από το χωριό',
+    'walks.title': 'Τρεις δρόμοι έξω από τον Λυσό',
+    'walks.body':
+      'Δύο κυκλικές διαδρομές που σε φέρνουν πίσω εκεί που ξεκίνησες, και μία μεγάλη πορεία στον παλιό δρόμο προς την Κρίτου Τέρρα. Το δάσος αρχίζει εκεί που τελειώνουν τα σπίτια, κι έτσι και οι τρεις ξεκινούν από το κέντρο του χωριού.',
+    'walks.time': 'Περίπου',
+    'walks.shape': 'Μορφή',
+    'walks.start': 'Ξεκινά',
+    'walks.beforeTitle': 'Πριν ξεκινήσεις',
+    'walks.b1': 'Πάρε περισσότερο νερό απ᾽ όσο νομίζεις ότι χρειάζεσαι. Δεν υπάρχει πουθενά να γεμίσεις μόλις φύγεις από το χωριό.',
+    'walks.b2': 'Τα καλοκαιρινά απογεύματα εδώ είναι ανελέητα. Περπάτησε νωρίς, ή άφησέ το για όταν πέσει το φως.',
+    'walks.b3': 'Είναι δασικοί και αγροτικοί δρόμοι, όχι πεζοδρόμια. Φόρα κάτι που θα χαρείς που φοράς αν στραμπουλήξεις.',
+    'walks.b4': 'Το σήμα στο τηλέφωνο πάει κι έρχεται μέσα στους λόφους. Πες σε κάποιον πού πηγαίνεις.',
+    'walks.note':
+      'Οι αποστάσεις προέρχονται από το Κοινοτικό Συμβούλιο Λυσού. Οι χρόνοι είναι δική μας εκτίμηση με ήρεμο βήμα — δεν υπάρχει επίσημη διαβάθμιση δυσκολίας για αυτές τις διαδρομές. Ρώτησε στο χωριό πριν από μια μεγάλη:',
 
     // — Then & Now —
     'thennow.nav': 'Τότε & Τώρα',

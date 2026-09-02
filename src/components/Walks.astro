@@ -1,0 +1,242 @@
+---
+import { Image } from 'astro:assets';
+import { walks } from '../data/walks';
+import { forest } from '../data/gallery';
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="walks">
+  <ul class="routes">
+    {
+      walks.map((w) => (
+        <li>
+          <article class="route">
+            <div class="dist" aria-hidden="true">
+              <span class="n">{w.km}</span>
+              <span class="u">km</span>
+            </div>
+
+            <div class="body">
+              <h3>{w.name[lang]}</h3>
+              <p class="what">{w.what[lang]}</p>
+
+              <dl class="facts">
+                <div>
+                  <dt>{t('walks.time')}</dt>
+                  <dd>{w.hours[lang]}</dd>
+                </div>
+                <div>
+                  <dt>{t('walks.shape')}</dt>
+                  <dd>{w.shape[lang]}</dd>
+                </div>
+                <div>
+                  <dt>{t('walks.start')}</dt>
+                  <dd>{w.start[lang]}</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+        </li>
+      ))
+    }
+  </ul>
+
+  <figure class="shot">
+    <Image
+      src={forest.image}
+      alt={forest.alt[lang]}
+      widths={[600, 900, 1400]}
+      sizes="(min-width: 1000px) 600px, 94vw"
+      format="webp"
+      quality={76}
+      loading="lazy"
+    />
+  </figure>
+
+  <aside class="before">
+    <h3>{t('walks.beforeTitle')}</h3>
+    <ul>
+      <li>{t('walks.b1')}</li>
+      <li>{t('walks.b2')}</li>
+      <li>{t('walks.b3')}</li>
+      <li>{t('walks.b4')}</li>
+    </ul>
+    <p class="note">
+      {t('walks.note')}{' '}
+      <a href="https://lyssos.org.cy/en/" target="_blank" rel="noopener noreferrer">lyssos.org.cy</a>
+    </p>
+  </aside>
+</div>
+
+<style>
+  .walks {
+    display: grid;
+    gap: clamp(1.5rem, 4vw, 2.4rem);
+  }
+
+  @media (min-width: 1000px) {
+    .walks {
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: start;
+    }
+
+    .routes {
+      grid-row: span 2;
+    }
+  }
+
+  .routes {
+    list-style: none;
+    display: grid;
+    gap: clamp(0.8rem, 2vw, 1.1rem);
+  }
+
+  .route {
+    display: flex;
+    gap: clamp(1rem, 2.5vw, 1.4rem);
+    height: 100%;
+    padding: clamp(1.1rem, 2.5vw, 1.5rem);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: rgba(240, 233, 216, 0.03);
+  }
+
+  /* The distance is the thing a walker decides on, so it leads */
+  .dist {
+    flex: none;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    border: 1px solid rgba(219, 164, 65, 0.35);
+    background: rgba(219, 164, 65, 0.07);
+  }
+
+  .n {
+    font-family: var(--serif);
+    font-size: 1.9rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--gold);
+  }
+
+  .u {
+    font-family: var(--mono);
+    font-size: var(--step--2);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--gold-soft);
+  }
+
+  .what {
+    margin-top: 0.45rem;
+    color: var(--ink-soft);
+    font-size: var(--step-0);
+    line-height: 1.55;
+  }
+
+  .facts {
+    display: grid;
+    gap: 0.45rem;
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .facts > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  dt {
+    font-family: var(--mono);
+    font-size: var(--step--2);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    min-width: 6.5rem;
+  }
+
+  dd {
+    color: var(--ink-soft);
+    font-size: var(--step--1);
+  }
+
+  .shot :global(img) {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    filter: brightness(0.86) saturate(0.78) contrast(1.03) sepia(0.14);
+  }
+
+  .before {
+    padding: clamp(1.2rem, 3vw, 1.6rem);
+    border: 1px solid rgba(219, 164, 65, 0.28);
+    border-radius: 16px;
+    background: rgba(219, 164, 65, 0.05);
+  }
+
+  .before h3 {
+    color: var(--gold);
+    font-size: var(--step-1);
+  }
+
+  .before ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 0.9rem;
+  }
+
+  .before li {
+    display: flex;
+    gap: 0.7rem;
+    color: var(--ink-soft);
+    font-size: var(--step-0);
+    line-height: 1.5;
+  }
+
+  .before li::before {
+    content: '';
+    flex: none;
+    width: 6px;
+    height: 6px;
+    margin-top: 0.6em;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .note {
+    margin-top: 1rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid rgba(219, 164, 65, 0.22);
+    color: var(--ink-soft);
+    font-size: var(--step--1);
+    line-height: 1.5;
+  }
+
+  .note a {
+    color: var(--gold);
+  }
+</style>
