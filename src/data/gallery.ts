@@ -68,19 +68,21 @@ export const figs: Photo = {
 };
 
 /**
- * A well-known figure of the village festivals, long since passed away.
- * A village photograph, supplied by Kleo. His name is not recorded here yet —
- * the caption says so rather than leaving him an anonymous decoration.
+ * Georgios Tamboutsaris, a well-known figure of the Lysos festivals, long since
+ * passed away. A village photograph, supplied by Kleo, who asked around and
+ * came back with his name. He is named on the page rather than left as an
+ * anonymous old man in traditional dress, which is the whole difference
+ * between remembering someone and decorating with them.
  */
 export const elder: Photo = {
   image: elderWaving,
   alt: {
-    en: 'An older man in traditional Cypriot dress, one hand raised in greeting, the other on his stick, before a whitewashed wall and green shutters.',
-    el: 'Ηλικιωμένος άνδρας με παραδοσιακή κυπριακή φορεσιά, το ένα χέρι σηκωμένο σε χαιρετισμό, το άλλο στο μπαστούνι του, μπροστά σε ασβεστωμένο τοίχο και πράσινα παντζούρια.',
+    en: 'Georgios Tamboutsaris in traditional Cypriot dress, one hand raised in greeting, the other on his stick, before a whitewashed wall and green shutters.',
+    el: 'Ο Γεώργιος Ταμπουτσάρης με παραδοσιακή κυπριακή φορεσιά, το ένα χέρι σηκωμένο σε χαιρετισμό, το άλλο στο μπαστούνι του, μπροστά σε ασβεστωμένο τοίχο και πράσινα παντζούρια.',
   },
   caption: {
-    en: 'And the village said it in person too. One of the familiar figures of the Lysos festivals, gone many years now. If you know his name, the village would like it written down.',
-    el: 'Και το χωριό το έλεγε και από κοντά. Μια από τις γνώριμες μορφές των πανηγυριών του Λυσού, χαμένη εδώ και πολλά χρόνια. Αν ξέρετε το όνομά του, το χωριό θα ήθελε να καταγραφεί.',
+    en: 'Georgios Tamboutsaris, one of the familiar figures of the Lysos festivals, gone many years now. The village said its welcome in person too.',
+    el: 'Ο Γεώργιος Ταμπουτσάρης, μια από τις γνώριμες μορφές των πανηγυριών του Λυσού, χαμένος εδώ και πολλά χρόνια. Το χωριό έλεγε το καλωσόρισμά του και από κοντά.',
   },
 };
 
