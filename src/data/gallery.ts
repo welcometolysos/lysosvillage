@@ -133,6 +133,13 @@ export const forest: Photo = {
 };
 
 /** The wider village, shown as a band under Visit. */
+/**
+ * The wider village, as a swipeable band under Visit.
+ *
+ * ORDER MATTERS: these are deliberately interleaved — a wide view, then a
+ * track, then something built or worked — so you never swipe past three
+ * versions of the same picture in a row.
+ */
 export const around: Photo[] = [
   {
     image: coastalPlain,
@@ -140,54 +147,7 @@ export const around: Photo[] = [
       en: 'The coastal plain and the bay far below the village, in early morning light.',
       el: 'Η παραλιακή πεδιάδα και ο κόλπος πολύ πιο κάτω από το χωριό, στο πρωινό φως.',
     },
-    caption: {
-      en: 'The whole coast, from up here.',
-      el: 'Όλη η ακτή, από εδώ πάνω.',
-    },
-  },
-  {
-    image: akamasView,
-    alt: {
-      en: 'Hills and olive groves falling away towards the Akamas peninsula and the sea.',
-      el: 'Λόφοι και ελαιώνες που κατεβαίνουν προς τη χερσόνησο του Ακάμα και τη θάλασσα.',
-    },
-    caption: {
-      en: 'Towards the Akamas.',
-      el: 'Προς τον Ακάμα.',
-    },
-  },
-  {
-    image: bayMorning,
-    alt: {
-      en: 'Houses at the edge of the village with the bay and headland beyond.',
-      el: 'Σπίτια στην άκρη του χωριού, με τον κόλπο και το ακρωτήρι πιο πέρα.',
-    },
-    caption: {
-      en: 'The edge of the village, first thing.',
-      el: 'Η άκρη του χωριού, πρωί πρωί.',
-    },
-  },
-  {
-    image: horseFarm,
-    alt: {
-      en: 'A riding stable among olive trees on the hillside above the village.',
-      el: 'Στάβλος ιππασίας ανάμεσα σε ελιές, στην πλαγιά πάνω από το χωριό.',
-    },
-    caption: {
-      en: 'The riding farm, up on the hillside.',
-      el: 'Η φάρμα ιππασίας, ψηλά στην πλαγιά.',
-    },
-  },
-  {
-    image: ploughedField,
-    alt: {
-      en: 'A ploughed field of red earth under a heavy sky, a single tree against the last of the sun.',
-      el: 'Οργωμένο χωράφι με κόκκινο χώμα κάτω από βαρύ ουρανό, ένα δέντρο μπροστά στο τελευταίο φως.',
-    },
-    caption: {
-      en: 'Red earth, turned and waiting.',
-      el: 'Κόκκινο χώμα, οργωμένο και περιμένει.',
-    },
+    caption: { en: 'The whole coast, from up here.', el: 'Όλη η ακτή, από εδώ πάνω.' },
   },
   {
     image: sunThroughOak,
@@ -195,21 +155,15 @@ export const around: Photo[] = [
       en: 'The sun breaking through the branches of an old oak above a mown field.',
       el: 'Ο ήλιος που σπάει μέσα από τα κλαδιά μιας γέρικης βελανιδιάς πάνω από θερισμένο χωράφι.',
     },
-    caption: {
-      en: 'Late sun, through the oak.',
-      el: 'Απογευματινός ήλιος, μέσα από τη βελανιδιά.',
-    },
+    caption: { en: 'Late sun, through the oak.', el: 'Απογευματινός ήλιος, μέσα από τη βελανιδιά.' },
   },
   {
-    image: oldOak,
+    image: horseFarm,
     alt: {
-      en: 'A broad old oak standing at the bend of a track through the woods.',
-      el: 'Μια πλατιά γέρικη βελανιδιά στη στροφή ενός μονοπατιού μέσα στο δάσος.',
+      en: 'A riding stable among olive trees on the hillside above the village.',
+      el: 'Στάβλος ιππασίας ανάμεσα σε ελιές, στην πλαγιά πάνω από το χωριό.',
     },
-    caption: {
-      en: 'The oak has the bend of the track to itself.',
-      el: 'Η βελανιδιά έχει δική της τη στροφή του δρόμου.',
-    },
+    caption: { en: 'The riding farm, up on the hillside.', el: 'Η φάρμα ιππασίας, ψηλά στην πλαγιά.' },
   },
   {
     image: greenTunnel,
@@ -223,6 +177,41 @@ export const around: Photo[] = [
     },
   },
   {
+    image: akamasView,
+    alt: {
+      en: 'Hills and olive groves falling away towards the Akamas peninsula and the sea.',
+      el: 'Λόφοι και ελαιώνες που κατεβαίνουν προς τη χερσόνησο του Ακάμα και τη θάλασσα.',
+    },
+    caption: { en: 'Towards the Akamas.', el: 'Προς τον Ακάμα.' },
+  },
+  {
+    image: ploughedField,
+    alt: {
+      en: 'A ploughed field of red earth under a heavy sky, a single tree against the last of the sun.',
+      el: 'Οργωμένο χωράφι με κόκκινο χώμα κάτω από βαρύ ουρανό, ένα δέντρο μπροστά στο τελευταίο φως.',
+    },
+    caption: { en: 'Red earth, turned and waiting.', el: 'Κόκκινο χώμα, οργωμένο και περιμένει.' },
+  },
+  {
+    image: oldOak,
+    alt: {
+      en: 'A broad old oak standing at the bend of a track through the woods.',
+      el: 'Μια πλατιά γέρικη βελανιδιά στη στροφή ενός μονοπατιού μέσα στο δάσος.',
+    },
+    caption: {
+      en: 'The oak has the bend of the track to itself.',
+      el: 'Η βελανιδιά έχει δική της τη στροφή του δρόμου.',
+    },
+  },
+  {
+    image: bayMorning,
+    alt: {
+      en: 'Houses at the edge of the village with the bay and headland beyond.',
+      el: 'Σπίτια στην άκρη του χωριού, με τον κόλπο και το ακρωτήρι πιο πέρα.',
+    },
+    caption: { en: 'The edge of the village, first thing.', el: 'Η άκρη του χωριού, πρωί πρωί.' },
+  },
+  {
     image: windingRoad,
     alt: {
       en: 'A forest road winding out of sight between banks of pine and red earth.',
@@ -231,6 +220,17 @@ export const around: Photo[] = [
     caption: {
       en: 'The road into the forest, going on without you.',
       el: 'Ο δρόμος προς το δάσος, που συνεχίζει χωρίς εσένα.',
+    },
+  },
+  {
+    image: hazyValley,
+    alt: {
+      en: 'Green valleys and terraces receding into haze below the village.',
+      el: 'Πράσινες κοιλάδες και πεζούλες που χάνονται στην καταχνιά κάτω από το χωριό.',
+    },
+    caption: {
+      en: 'Valley after valley, into the haze.',
+      el: 'Κοιλάδα μετά την κοιλάδα, μέσα στην καταχνιά.',
     },
   },
 ];
