@@ -9,6 +9,7 @@ import PhotoBand from './PhotoBand.astro';
 import GreatFountain from './GreatFountain.astro';
 import InTheVillage from './InTheVillage.astro';
 import Walks from './Walks.astro';
+import VillageInNumbers from './VillageInNumbers.astro';
 import { welcomeSign, dusk, elder } from '../data/gallery';
 import { useTranslations, type Lang } from '../i18n/ui';
 
@@ -29,6 +30,14 @@ const soon = t('soon');
   soonLabel={soon}
 >
   <Figure photo={welcomeSign} lang={lang} shape="wide" />
+
+  <div class="aside">
+    <h3>{t('welcome.name.title')}</h3>
+    <p>{t('welcome.name.body')}</p>
+  </div>
+
+  <h3 class="subhead">{t('numbers.title')}</h3>
+  <VillageInNumbers lang={lang} />
   <Figure photo={elder} lang={lang} shape="tall" />
 </Section>
 

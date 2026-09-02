@@ -1,0 +1,263 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+/**
+ * Census figures for Lysos, 1881–2011, from the Statistical Service of the
+ * Republic of Cyprus as tabulated on the Greek Wikipedia entry.
+ *
+ * The 1911 figure is left in but flagged on the page. A 62% collapse followed
+ * by a 249% recovery in ten years is what a recording error looks like, not
+ * what a village does, and presenting it as real would tell a false story
+ * about this place. Removing it silently would be worse.
+ */
+const census: [number, number][] = [
+  [1881, 287],
+  [1891, 352],
+  [1901, 416],
+  [1911, 156],
+  [1921, 545],
+  [1931, 566],
+  [1946, 659],
+  [1960, 587],
+  [1973, 406],
+  [1976, 373],
+  [1982, 307],
+  [1992, 208],
+  [2001, 160],
+  [2011, 205],
+];
+
+const W = 1000;
+const H = 330;
+const PAD = { top: 34, right: 30, bottom: 46, left: 30 };
+const MAX = 700;
+
+const first = census[0][0];
+const last = census[census.length - 1][0];
+
+const x = (year: number) =>
+  PAD.left + ((year - first) / (last - first)) * (W - PAD.left - PAD.right);
+const y = (pop: number) => H - PAD.bottom - (pop / MAX) * (H - PAD.top - PAD.bottom);
+
+const pts = census.map(([yr, p]) => ({ yr, p, cx: x(yr), cy: y(p) }));
+const line = pts.map((p, i) => `${i ? 'L' : 'M'}${p.cx.toFixed(1)} ${p.cy.toFixed(1)}`).join(' ');
+const area = `${line} L${pts[pts.length - 1].cx.toFixed(1)} ${H - PAD.bottom} L${pts[0].cx.toFixed(1)} ${H - PAD.bottom} Z`;
+
+const peak = pts.find((p) => p.p === 659)!;
+const low = pts.find((p) => p.p === 160)!;
+const now = pts[pts.length - 1];
+const anomaly = pts.find((p) => p.yr === 1911)!;
+
+// Years worth labelling along the bottom — all of them is a mess.
+const ticks = [1881, 1921, 1946, 1973, 2001, 2011];
+---
+
+<figure class="numbers">
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={t('numbers.alt')}>
+    <defs>
+      <linearGradient id="pop-fill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="rgb(219 164 65 / 0.30)" />
+        <stop offset="100%" stop-color="rgb(219 164 65 / 0)" />
+      </linearGradient>
+    </defs>
+
+    <!-- the ground -->
+    <line class="axis" x1={PAD.left} y1={H - PAD.bottom} x2={W - PAD.right} y2={H - PAD.bottom} />
+
+    <path class="area" d={area} fill="url(#pop-fill)" />
+    <path class="line" d={line} pathLength="1" />
+
+    {
+      pts.map((p, i) => (
+        <circle
+          class:list={['dot', { key: p.p === 659 || p.p === 160 || p.yr === 2011 }]}
+          cx={p.cx}
+          cy={p.cy}
+          r={p.p === 659 || p.p === 160 || p.yr === 2011 ? 7 : 4}
+        />
+      ))
+    }
+
+    <!-- the three moments that tell the story -->
+    <g class="callout">
+      <text class="big" x={peak.cx} y={peak.cy - 18} text-anchor="middle">659</text>
+    </g>
+
+    <g class="callout">
+      <text class="big" x={low.cx} y={low.cy + 32} text-anchor="middle">160</text>
+    </g>
+
+    <g class="callout">
+      <text class="big rise" x={now.cx} y={now.cy - 18} text-anchor="end">205</text>
+    </g>
+
+    <g class="anomaly">
+      <text class="qm" x={anomaly.cx} y={anomaly.cy + 26} text-anchor="middle">?</text>
+    </g>
+
+    {
+      ticks.map((yr) => (
+        <text class="tick" x={x(yr)} y={H - 16} text-anchor="middle">
+          {yr}
+        </text>
+      ))
+    }
+  </svg>
+
+  <figcaption>
+    <p class="read">{t('numbers.read')}</p>
+    <p class="src">{t('numbers.src')}</p>
+  </figcaption>
+</figure>
+
+<script>
+  // Draw the line when the graph comes into view. Everything is visible by
+  // default; this hides it for a moment and draws it back, so a failure here
+  // can only ever mean 'no animation', never 'no graph'.
+  (() => {
+    const fig = document.querySelector('.numbers');
+    if (!fig) return;
+    const line = fig.querySelector('.line');
+    const area = fig.querySelector('.area');
+    if (!line) return;
+    if (!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+
+    const show = () => { line.classList.add('drawn'); area?.classList.add('drawn'); };
+
+    line.classList.add('undrawn');
+    area?.classList.add('undrawn');
+
+    // Whatever happens, it is drawn within three seconds.
+    const failsafe = setTimeout(show, 3000);
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { clearTimeout(failsafe); show(); io.disconnect(); }
+        });
+      }, { threshold: 0.25 });
+      io.observe(fig);
+    } else {
+      clearTimeout(failsafe);
+      show();
+    }
+  })();
+</script>
+
+<style>
+  .numbers {
+    width: 100%;
+    margin: clamp(1.75rem, 4vw, 2.5rem) 0 0;
+    padding: clamp(1rem, 3vw, 1.8rem);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--stone-2);
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .axis {
+    stroke: var(--line);
+    stroke-width: 1;
+  }
+
+  .line {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .dot {
+    fill: var(--stone-2);
+    stroke: var(--gold);
+    stroke-width: 2;
+  }
+
+  .dot.key {
+    fill: var(--gold);
+  }
+
+  .big {
+    fill: var(--gold-soft);
+    font-family: var(--serif);
+    font-size: 34px;
+    font-weight: 600;
+  }
+
+  .big.rise {
+    fill: #9fd0a8;
+  }
+
+  .yr,
+  .tick {
+    fill: var(--ink-soft);
+    font-family: var(--mono);
+    font-size: 17px;
+    letter-spacing: 1.5px;
+  }
+
+  .qm {
+    fill: var(--ink-soft);
+    font-family: var(--mono);
+    font-size: 26px;
+    opacity: 0.75;
+  }
+
+  figcaption {
+    margin-top: 1.1rem;
+  }
+
+  .read {
+    max-width: var(--measure);
+    color: var(--ink-soft);
+    font-size: var(--step-0);
+    line-height: 1.6;
+  }
+
+  .src {
+    margin-top: 0.7rem;
+    font-family: var(--mono);
+    font-size: var(--step--2);
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+  }
+
+  /*
+    The time lapse. The line is drawn by default, so if the script below never
+    runs — JS off, an error, anything — you still get the whole graph. The
+    script only ever takes it away in order to draw it back in.
+  */
+  .line.undrawn {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+
+  .line.undrawn.drawn {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 2.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .area.undrawn {
+    opacity: 0;
+  }
+
+  .area.undrawn.drawn {
+    opacity: 1;
+    transition: opacity 1.6s ease-out 0.6s;
+  }
+
+  </style>

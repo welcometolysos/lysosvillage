@@ -55,6 +55,16 @@ export const ui = {
     'welcome.body':
       'Lysos sits at 560 metres in the Paphos Forest, high above the valleys that run down to the Akamas. Around the church of Panagia Chryseleousa the village has kept its stories, its chapels and its people through the centuries.',
 
+    'welcome.name.title': 'Where the name comes from',
+    'welcome.name.body':
+      'Nobody is certain. One account traces it to settlers out of Asia Minor who carried their place-names with them — Lissos was an ancient city on Crete too. The other is harder to forget: that it comes from λύω, to melt, because there was smelting here, where the water and the copper met on the western slopes of Troodos. Carved from stone, and once lit by fire.',
+    'numbers.title': 'The village, counted',
+    'numbers.alt':
+      'A graph of the population of Lysos from 1881 to 2011, rising to 659 people in 1946, falling to 160 by 2001, and rising again to 205 in 2011.',
+    'numbers.read':
+      'Six hundred and fifty-nine people lived here in 1946. By 2001 there were a hundred and sixty. That fall is the story of everyone who left — for Paphos, for Nicosia, for England, Australia, South Africa. The last figure is the one worth noticing: it goes back up.',
+    'numbers.src':
+      'Census figures, Statistical Service of the Republic of Cyprus. The 1911 figure is marked ? — a 62% fall and a 249% recovery in ten years is what a recording error looks like, not what a village does.',
     // — Churches —
     'fountain.kicker': 'The heart of the village',
     'fountain.title': 'The Great Fountain',
@@ -205,6 +215,16 @@ export const ui = {
     'welcome.body':
       'Ο Λυσός βρίσκεται στα 560 μέτρα, μέσα στο Δάσος της Πάφου, ψηλά πάνω από τις κοιλάδες που κατεβαίνουν προς τον Ακάμα. Γύρω από την εκκλησία της Παναγίας Χρυσελεούσας, το χωριό κράτησε τις ιστορίες του, τα ξωκλήσια του και τους ανθρώπους του μέσα στους αιώνες.',
 
+    'welcome.name.title': 'Από πού βγαίνει το όνομα',
+    'welcome.name.body':
+      'Κανείς δεν ξέρει με βεβαιότητα. Μια εκδοχή το πάει σε αποίκους από τη Μικρά Ασία, που κουβάλησαν μαζί τους τα τοπωνύμιά τους — Λισσός ήταν και αρχαία πόλη της Κρήτης. Η άλλη δύσκολα ξεχνιέται: ότι βγαίνει από το «λύω», λιώνω, γιατί εδώ έλιωναν μέταλλο, εκεί που το νερό συναντούσε τον χαλκό στις δυτικές πλαγιές του Τροόδους. Σκαλισμένο στην πέτρα, και κάποτε φωτισμένο από φωτιά.',
+    'numbers.title': 'Το χωριό, μετρημένο',
+    'numbers.alt':
+      'Γράφημα του πληθυσμού του Λυσού από το 1881 ως το 2011: ανεβαίνει στους 659 κατοίκους το 1946, πέφτει στους 160 ως το 2001, και ξανανεβαίνει στους 205 το 2011.',
+    'numbers.read':
+      'Εξακόσιοι πενήντα εννιά άνθρωποι ζούσαν εδώ το 1946. Ως το 2001 είχαν μείνει εκατόν εξήντα. Αυτή η πτώση είναι η ιστορία όλων όσων έφυγαν — για την Πάφο, για τη Λευκωσία, για την Αγγλία, την Αυστραλία, τη Νότια Αφρική. Ο τελευταίος αριθμός αξίζει την προσοχή: ξαναρχίζει να ανεβαίνει.',
+    'numbers.src':
+      'Στοιχεία απογραφών, Στατιστική Υπηρεσία της Κυπριακής Δημοκρατίας. Το 1911 σημειώνεται με ? — πτώση 62% και ανάκαμψη 249% μέσα σε δέκα χρόνια μοιάζει με λάθος καταγραφής, όχι με κάτι που κάνει ένα χωριό.',
     // — Churches —
     'fountain.kicker': 'Η καρδιά του χωριού',
     'fountain.title': 'Η Μεγάλη Βρύση',
