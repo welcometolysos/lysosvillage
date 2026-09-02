@@ -24,6 +24,7 @@ import sunThroughOak from '../assets/village/12-04-13.jpg';
 import oldOak from '../assets/village/12-04-12.jpg';
 import greenTunnel from '../assets/village/12-04-9.jpg';
 import windingRoad from '../assets/village/whatsapp-image-2026-09-02-at-00-09-06.jpg';
+import digenisIcon from '../assets/village/digenis-akritas-made-for-this-site.jpg';
 
 export interface Photo {
   image: ImageMetadata;
@@ -80,6 +81,25 @@ export const elder: Photo = {
   caption: {
     en: 'And the village said it in person too. One of the familiar figures of the Lysos festivals, gone many years now. If you know his name, the village would like it written down.',
     el: 'Και το χωριό το έλεγε και από κοντά. Μια από τις γνώριμες μορφές των πανηγυριών του Λυσού, χαμένη εδώ και πολλά χρόνια. Αν ξέρετε το όνομά του, το χωριό θα ήθελε να καταγραφεί.',
+  },
+};
+
+/**
+ * Digenis Akritas, made for this site with an image generator on Kleo's own
+ * prompt. Not a historical icon, not from Lysos, and the halo it carries is a
+ * saint's — which Digenis is not. The caption says all of that plainly,
+ * because this page sits directly below nine real churches with real icons and
+ * a visitor should never have to wonder which is which.
+ */
+export const digenis: Photo = {
+  image: digenisIcon,
+  alt: {
+    en: 'A mosaic-style image of Digenis Akritas holding a sword and a round shield, made for this website.',
+    el: 'Εικόνα του Διγενή Ακρίτα σε ύφος ψηφιδωτού, με σπαθί και στρογγυλή ασπίδα, φτιαγμένη για αυτή την ιστοσελίδα.',
+  },
+  caption: {
+    en: 'Digenis as the songs describe him — an image made for this website, not an old icon and not one of the village’s own.',
+    el: 'Ο Διγενής όπως τον περιγράφουν τα τραγούδια — εικόνα φτιαγμένη για αυτή την ιστοσελίδα, όχι παλιά εικόνα ούτε του χωριού.',
   },
 };
 

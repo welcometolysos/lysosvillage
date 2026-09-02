@@ -1,7 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { figs, forest } from '../data/gallery';
-import DigenisMark from './DigenisMark.astro';
+import { figs, forest, digenis } from '../data/gallery';
 import { discoveries } from '../data/discover';
 import { useTranslations, type Lang } from '../i18n/ui';
 
@@ -15,6 +14,7 @@ const t = useTranslations(lang);
 // Legends still has no photograph — we have nothing of Digenis's stone — so it
 // keeps its designed plate rather than borrowing an unrelated picture.
 const photos: Record<string, ImageMetadata | undefined> = {
+  legends: digenis.image,
   nature: forest.image,
   food: figs.image,
 };
@@ -31,9 +31,7 @@ const photos: Record<string, ImageMetadata | undefined> = {
               {/* Legends gets its own drawn mark: Digenis's footstep in the
                   rock, the thing Lysos actually has. Replaced the moment
                   Kleo photographs the real stone. */}
-              {d.id === 'legends' && <DigenisMark />}
-
-              {!photo && d.id !== 'legends' && (
+              {!photo && (
                 <div class="plate" aria-hidden="true">
                   <svg viewBox="0 0 200 125" preserveAspectRatio="xMidYMid slice">
                     <circle cx="100" cy="125" r="34" />
@@ -72,6 +70,10 @@ const photos: Record<string, ImageMetadata | undefined> = {
 
             <div class="detail">
               <p>{d.detail[lang]}</p>
+
+              {/* The Digenis image is newly made, not an artefact. Say so on
+                  the page, not only in the code. */}
+              {d.id === 'legends' && <p class="made">{digenis.caption?.[lang]}</p>}
 
               {d.facts && (
                 <ul class="facts">
@@ -231,6 +233,17 @@ const photos: Record<string, ImageMetadata | undefined> = {
     color: var(--ink-soft);
     font-size: var(--step-0);
     line-height: 1.65;
+  }
+
+  .made {
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    border-left: 2px solid rgba(219, 164, 65, 0.4);
+    background: rgba(219, 164, 65, 0.05);
+    color: var(--ink-soft);
+    font-size: var(--step-0);
+    font-style: italic;
+    line-height: 1.5;
   }
 
   .facts {
