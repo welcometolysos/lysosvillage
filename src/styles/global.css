@@ -24,6 +24,10 @@
 
   /* Big on purpose — elders must read this without squinting.
      Scales smoothly from phone to desktop. */
+  /* Nothing on this site goes below --step--2. Half the people it is for are
+     the village's elders, and 10px uppercase mono is decoration, not text. */
+  --step--2: clamp(0.78rem, 0.2vw + 0.74rem, 0.85rem); /* micro: credits, coords */
+  --step--1: clamp(0.88rem, 0.25vw + 0.82rem, 0.98rem); /* labels, buttons, kickers */
   --step-0: clamp(1.15rem, 0.5vw + 1.05rem, 1.3rem); /* body */
   --step-1: clamp(1.4rem, 1vw + 1.2rem, 1.75rem);
   --step-2: clamp(1.8rem, 2vw + 1.3rem, 2.5rem);
@@ -100,8 +104,8 @@ h3 {
 /* Small uppercase labels — the "engraved" detail */
 .kicker {
   font-family: var(--mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.22em;
+  font-size: var(--step--1);
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gold);
 }
