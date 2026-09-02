@@ -133,8 +133,15 @@ export const ui = {
     'visit.doing.body':
       'Walk the forest trails, follow the wine routes, visit the nine churches and the holy spring and cave of Agios Charalambos.',
     'places.title': 'In the village',
+    'places.eat': 'Eat & drink',
+    'places.stay': 'Stay',
+    'places.do': 'Things to do',
+    'places.village': 'The village itself',
+    'places.directions': 'Directions',
+    'places.website': 'Website',
     'places.caveat':
-      'Tap any of these for directions. We have deliberately not printed opening hours — they change, and nobody should drive up from Paphos on the strength of a website. Ring ahead, or ask at the café.',
+      'We have deliberately not printed opening hours — they change, and nobody should drive up from Paphos on the strength of a website. Ring ahead. Phone numbers and addresses come from the Lysos Community Council:',
+    'places.source': 'lyssos.org.cy',
     'visit.map.alt':
       'Map of Lysos and the surrounding Paphos Forest, with the village marked at its centre.',
     'visit.explore': 'Explore the map',
@@ -259,8 +266,15 @@ export const ui = {
     'visit.doing.body':
       'Περπάτησε τα μονοπάτια του δάσους, ακολούθησε τους δρόμους του κρασιού, επισκέψου τις εννιά εκκλησίες και το αγίασμα και τη σπηλιά του Αγίου Χαραλάμπους.',
     'places.title': 'Στο χωριό',
+    'places.eat': 'Φαγητό & καφές',
+    'places.stay': 'Διαμονή',
+    'places.do': 'Τι να κάνεις',
+    'places.village': 'Το ίδιο το χωριό',
+    'places.directions': 'Οδηγίες',
+    'places.website': 'Ιστοσελίδα',
     'places.caveat':
-      'Πάτησε οποιοδήποτε για οδηγίες. Επίτηδες δεν βάλαμε ώρες λειτουργίας — αλλάζουν, και κανείς δεν πρέπει να ανέβει από την Πάφο βασισμένος σε μια ιστοσελίδα. Τηλεφώνησε πρώτα, ή ρώτησε στο καφενείο.',
+      'Επίτηδες δεν βάλαμε ώρες λειτουργίας — αλλάζουν, και κανείς δεν πρέπει να ανέβει από την Πάφο βασισμένος σε μια ιστοσελίδα. Τηλεφώνησε πρώτα. Τα τηλέφωνα και οι διευθύνσεις προέρχονται από το Κοινοτικό Συμβούλιο Λυσού:',
+    'places.source': 'lyssos.org.cy',
     'visit.map.alt':
       'Χάρτης του Λυσού και του γύρω Δάσους της Πάφου, με το χωριό σημειωμένο στο κέντρο.',
     'visit.explore': 'Εξερεύνησε τον χάρτη',
