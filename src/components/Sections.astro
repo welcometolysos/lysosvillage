@@ -7,6 +7,7 @@ import Discover from './Discover.astro';
 import Figure from './Figure.astro';
 import PhotoBand from './PhotoBand.astro';
 import GreatFountain from './GreatFountain.astro';
+import InTheVillage from './InTheVillage.astro';
 import { welcomeSign, dusk, elder } from '../data/gallery';
 import { useTranslations, type Lang } from '../i18n/ui';
 
@@ -101,6 +102,8 @@ const soon = t('soon');
     </article>
   </div>
   <Map lang={lang} />
+
+  <InTheVillage lang={lang} />
   <PhotoBand lang={lang} />
 </Section>
 
